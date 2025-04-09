@@ -3,14 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La mia pagina personale</title>
-  <!-- Importa il font da Google Fonts -->
+  <title>Leonardo Rufini</title>
+  <!-- Font da Google -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Collega il file CSS -->
-  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Inline CSS -->
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      color: #333;
+      background: #f4f4f4;
+    }
+    
+    /* Header e Navbar */
+    header {
+      background: #007acc;
+      color: white;
+      padding: 1em 0;
+      text-align: center;
+    }
+    
+    .nav-list {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-list li {
+      margin: 0;
+    }
+    
+    .nav-list a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+    /* Sezioni */
+    section {
+      padding: 2em;
+      max-width: 800px;
+      margin: 2em auto;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    
+    #project-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+    
+    .project {
+      background: #eaeaea;
+      padding: 1em;
+      flex: 1;
+      min-width: 200px;
+      border-radius: 4px;
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1em;
+      background: #333;
+      color: white;
+      width: 100%;
+      bottom: 0;
+    }
+    
+    /* Link repository */
+    .project a {
+      text-decoration: none;
+      color: #007acc;
+    }
+  </style>
 </head>
 <body>
-  <!-- Header con navbar -->
+  <!-- Header e Navbar -->
   <header>
     <nav>
       <ul class="nav-list">
@@ -22,38 +108,65 @@
     <h1>Benvenuto sul mio Github.io</h1>
   </header>
 
-  <!-- Sezione "Chi sono" -->
+  <!-- Sezione Chi Sono -->
   <section id="about">
     <h2>Chi Sono</h2>
-    <p>Ciao! Sono [Tuo Nome], uno sviluppatore appassionato di tecnologia e programmazione. Qui condivido i miei progetti e idee.</p>
+    <p>Ciao! Sono Leonardo Rufini, uno ingegnere informatico appassionato di tecnologia e programmazione. Qui condivido i miei progetti e le mie idee.</p>
   </section>
 
   <!-- Sezione Progetti -->
   <section id="projects">
     <h2>Progetti</h2>
-    <div class="project-list">
-      <div class="project">
-        <h3>Progetto 1</h3>
-        <p>Descrizione breve del progetto 1. Cosa fa, quali tecnologie usa, ecc.</p>
-      </div>
-      <div class="project">
-        <h3>Progetto 2</h3>
-        <p>Descrizione breve del progetto 2. Dettagli, funzionalità e innovazione.</p>
-      </div>
-      <!-- Aggiungi altri progetti se necessario -->
+    <!-- In questo div verranno inseriti dinamicamente i progetti di GitHub -->
+    <div id="project-list">
+      <p>Caricamento dei progetti da GitHub...</p>
     </div>
   </section>
 
   <!-- Sezione Contatti -->
   <section id="contact">
     <h2>Contatti</h2>
-    <p>Puoi contattarmi via email a: <a href="mailto:tuo.email@example.com">tuo.email@example.com</a></p>
-    <p>Seguimi su <a href="https://github.com/tuo-username" target="_blank">GitHub</a> per rimanere aggiornato sui miei progetti.</p>
+    <p>Puoi contattarmi via email a: <a href="mailto:leo.rufini.459@gmail.com">leo.rufini.459@gmail.com</a></p>
+    <p>Seguimi su <a href="https://github.com/pennyw1ze" target="_blank">GitHub</a> per rimanere aggiornato sui miei progetti.</p>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 [Tuo Nome]. Tutti i diritti riservati.</p>
+    <p>&copy; 2025 Leonardo Rufini</p>
   </footer>
+
+  <!-- Script per caricare dinamicamente i progetti da GitHub -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // URL dell'API per le repository pubbliche
+      const apiURL = "https://api.github.com/users/pennyw1ze/repos";
+      
+      fetch(apiURL)
+        .then(response => response.json())
+        .then(data => {
+          const projectList = document.getElementById("project-list");
+          projectList.innerHTML = ""; // Svuota il contenitore
+          
+          // Ordina le repository per data di aggiornamento (opzionale)
+          data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+          
+          data.forEach(repo => {
+            // Crea un elemento per ciascun progetto
+            const projectDiv = document.createElement("div");
+            projectDiv.className = "project";
+            projectDiv.innerHTML = `
+              <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
+              <p>${repo.description ? repo.description : "Nessuna descrizione"}</p>
+            `;
+            projectList.appendChild(projectDiv);
+          });
+        })
+        .catch(error => {
+          console.error("Errore durante il caricamento dei progetti:", error);
+          document.getElementById("project-list").innerHTML = "<p>Impossibile caricare i progetti da GitHub.</p>";
+        });
+    });
+  </script>
+
 </body>
 </html>
