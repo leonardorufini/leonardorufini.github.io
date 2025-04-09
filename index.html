@@ -23,14 +23,13 @@
       font-family: 'Roboto', sans-serif;
       margin: 0;
       line-height: 1.6;
-      color: #333;
-      background: #f4f4f4;
+      background: #EFF1F3;
     }
     
     /* Header e Navbar */
     header {
-      background: #007acc;
-      color: white;
+      background: #223843;
+      color: #EFF1F3;
       padding: 1em 0;
       text-align: center;
     }
@@ -39,19 +38,23 @@
       list-style: none;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
       margin: 0;
       padding: 0;
     }
-    
+
     .nav-list li {
       margin: 0;
     }
     
     .nav-list a {
-      color: white;
+      color: #EFF1F3;
       text-decoration: none;
       font-weight: bold;
+    }
+
+    .nav-list a:hover{
+      font-size: larger;
     }
     
     /* Sezioni */
@@ -59,9 +62,10 @@
       padding: 2em;
       max-width: 800px;
       margin: 2em auto;
-      background: white;
+      background: #223843;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       border-radius: 8px;
+      color: #EFF1F3;
     }
     
     #project-list {
@@ -71,19 +75,20 @@
     }
     
     .project {
-      background: #eaeaea;
+      background: #EF6F6C;
       padding: 1em;
       flex: 1;
       min-width: 200px;
       border-radius: 4px;
+      color: #223843;
     }
     
     /* Footer */
     footer {
       text-align: center;
       padding: 1em;
-      background: #333;
-      color: white;
+      background: #223843;
+      color: #EFF1F3;
       width: 100%;
       bottom: 0;
     }
@@ -91,7 +96,42 @@
     /* Link repository */
     .project a {
       text-decoration: none;
-      color: #007acc;
+      color: #223843;
+      
+    }
+    .project a:hover{
+      color: #EFF1F3;
+    }
+    a{
+      color: #D8B4A0;
+      text-decoration: none;
+    }
+
+    /* BUTTON */
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 20px;
+      background-color: #EF6F6C;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .download-btn:hover {
+      background-color: #CC5F5C;
+    }
+
+    .download-btn svg {
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
+      fill: white;
     }
   </style>
 </head>
@@ -100,34 +140,51 @@
   <header>
     <nav>
       <ul class="nav-list">
-        <li><a href="#about">Chi sono</a></li>
-        <li><a href="#projects">Progetti</a></li>
-        <li><a href="#contact">Contatti</a></li>
+        <li><a href="#about">Who am I</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contacts</a></li>
+        <li><a href="#curriculum">Curriculum</a></li>
       </ul>
     </nav>
-    <h1>Benvenuto sul mio Github.io</h1>
+    <h1>Leonardo Rufini</h1>
   </header>
 
   <!-- Sezione Chi Sono -->
   <section id="about">
-    <h2>Chi Sono</h2>
-    <p>Ciao! Sono Leonardo Rufini, uno ingegnere informatico appassionato di tecnologia e programmazione. Qui condivido i miei progetti e le mie idee.</p>
+    <h2>About me</h2>
+    <p>Hi! I am Leonardo Rufini, engeneer in computer science that enjoys programming and loves technology.
+      I graduated in the bachelor degree in engeneering in computer science at Sapienza university in Rome, 
+      and I am now attending the Master degree in Engeneering in Computer Science. I love cryptography and attended the <a href="https://cyberchallenge.it" target="_blank">Cyberchallenge</a>
+      with the Sapienza team in 2024.
+      I am actually studying and enjoying advanced cryptography and blockchain, and trying to understand Zero Knwoledges cryptographical techniques.
+    </p>
   </section>
 
   <!-- Sezione Progetti -->
   <section id="projects">
-    <h2>Progetti</h2>
+    <h2>Projects on Github</h2>
     <!-- In questo div verranno inseriti dinamicamente i progetti di GitHub -->
     <div id="project-list">
-      <p>Caricamento dei progetti da GitHub...</p>
+      <p>Loading Github projects ...</p>
     </div>
   </section>
 
   <!-- Sezione Contatti -->
   <section id="contact">
-    <h2>Contatti</h2>
-    <p>Puoi contattarmi via email a: <a href="mailto:leo.rufini.459@gmail.com">leo.rufini.459@gmail.com</a></p>
-    <p>Seguimi su <a href="https://github.com/pennyw1ze" target="_blank">GitHub</a> per rimanere aggiornato sui miei progetti.</p>
+    <h2>Contact me</h2>
+    <p>You can reach me via email at: <a href="mailto:leo.rufini.459@gmail.com">leo.rufini.459@gmail.com</a></p>
+    <p>Follow me on <a href="https://github.com/pennyw1ze" target="_blank">GitHub</a> to keep up to date with my projects.</p>
+  </section>
+
+  <section id="Curriculum">
+    <h2>Curriculum</h2>
+    <p>Click the button to download my CV from Github.</p>
+    <a href="https://github.com/leonardorufini/leonardorufini.github.io/CV.pdf" download class="download-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M5 20h14v-2H5v2zm7-18l-5.5 5.5h4v6h3v-6h4L12 2z"/>
+      </svg>
+      Download CV
+    </a>
   </section>
 
   <!-- Footer -->
