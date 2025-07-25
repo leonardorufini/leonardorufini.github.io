@@ -6,7 +6,8 @@
   <title>Leonardo Rufini</title>
   <!-- Font da Google -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  
+
+
   <!-- Inline CSS -->
   <style>
     * {
@@ -16,7 +17,6 @@
     html, body {
       overflow-x: hidden;
       margin: 0;
-      padding: 0;
     }
 
     body {
@@ -66,6 +66,7 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       border-radius: 8px;
       color: #EFF1F3;
+      box-sizing: border-box; /* Ensure padding is included in width calculations */
     }
     
     #project-list {
@@ -73,7 +74,6 @@
       flex-wrap: wrap;
       gap: 1em;
     }
-    
     .project {
       background: #EF6F6C;
       padding: 1em;
@@ -82,6 +82,7 @@
       border-radius: 4px;
       color: #223843;
     }
+
     
     /* Footer */
     footer {
@@ -179,12 +180,20 @@
   <section id="curriculum">
     <h2>Curriculum</h2>
     <p>Click the button to download my CV from Github.</p>
-    <button type="button" href="https://raw.githubusercontent.com/leonardorufini/leonardorufini.github.io/main/CV.pdf" class="download-btn" download>
+    <button type="button" class="download-btn" onclick="downloadCV()" style="cursor: pointer;">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d="M5 20h14v-2H5v2zm7-18l-5.5 5.5h4v6h3v-6h4L12 2z"/>
       </svg>
       Download CV
-    </button>    
+    </button>
+    <script>
+      function downloadCV() {
+        const link = document.createElement('a');
+        link.href = "https://raw.githubusercontent.com/leonardorufini/leonardorufini.github.io/main/CV.pdf";
+        link.download = "CV.pdf";
+        link.click();
+      }
+    </script> 
   </section>
 
   <!-- Footer -->
