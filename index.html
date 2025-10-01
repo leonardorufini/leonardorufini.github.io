@@ -149,7 +149,7 @@
         display: none;
         background: none;
         border: none;
-        color: var(--text-white); /* White icon for visibility */
+        color: var(--accent-color); /* Accent color for visibility */
         cursor: pointer;
         padding: 10px;
         z-index: 1001;
@@ -168,7 +168,7 @@
       display: block;
       width: 30px;
       height: 3px;
-      background: var(--text-white);
+      background: var(--accent-color);
       border-radius: 3px;
       position: absolute;
       transition: all 0.3s ease;
@@ -179,7 +179,7 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      background: var(--text-white);
+      background: var(--accent-color);
       border-radius: 3px;
       transition: all 0.3s ease;
     }
@@ -242,7 +242,7 @@
     
     #project-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly larger min-width */
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive min-width */
       gap: 2.2em; /* More space between projects */
       margin-top: 2.5em;
     }
@@ -426,9 +426,21 @@
     }
 
     @media (max-width: 768px) {
-      /* Ensure footer is visible and not affected by mobile nav overlay */
+      /* Prevent scrolling when mobile nav is active */
       body.nav-active {
-        overflow: hidden; /* Prevent scrolling when mobile nav is open */
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+      }
+      
+      /* Keep header fixed when nav is active */
+      body.nav-active header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1002;
       }
       
       header {
@@ -447,21 +459,23 @@
 
       .nav-toggle {
         display: flex !important; /* Show only on smartphone */
+        z-index: 1003; /* Ensure button stays above nav */
       }
 
       nav {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%; /* Full viewport height */
+        width: 100vw;
+        height: 100vh;
         background: var(--primary-bg);
         display: flex;
         align-items: center;
         justify-content: center;
         transform: translateX(100%);
         transition: transform 0.4s ease-in-out;
-        overflow-y: hidden; /* Prevent scrolling within the nav itself */
+        z-index: 1001;
+        overflow: hidden;
       }
       nav.active {
         transform: translateX(0);
@@ -470,18 +484,20 @@
       .nav-list {
         flex-direction: column;
         gap: 25px;
-        font-size: 1.5em;
-        max-height: 100%; /* Ensure list doesn't exceed nav height */
-        overflow-y: auto; /* Allow internal scrolling if content overflows */
-        padding: 20px; /* Add some padding if it scrolls */
+        font-size: 1em;
+        padding: 20px;
+        margin: 0;
+        text-align: center;
       }
       .nav-list a {
           font-size: 1.8em; /* Even larger links for better touch target */
           padding: 18px 30px;
           color: var(--text-white); /* White for mobile nav links */
+          display: block;
+          width: 100%;
       }
       .nav-list a:hover {
-        background-color: var(--accent-deep);
+        /* background-color: var(--acce); */
         color: var(--text-white);
       }
       .nav-list a::after {
@@ -493,8 +509,8 @@
 
 
       section {
-        padding: 2.5em 1.5em;
-        margin: 2em auto; /* Reduced margin */
+        padding: 2em 1.2em;
+        margin: 1.5em 1em; /* More horizontal margin to show background */
       }
       section h2 {
         font-size: 2em;
@@ -505,16 +521,24 @@
       }
       #project-list {
         grid-template-columns: 1fr;
-        gap: 1.5em;
+        gap: 1.2em;
+        margin: 1.5em 0; /* Better centering */
+        padding: 0 0.5em; /* Add horizontal padding */
       }
       .project {
-        padding: 1.5em;
+        padding: 1.2em;
+        margin: 0 auto; /* Center the project cards */
+        max-width: 100%; /* Ensure cards don't exceed container */
       }
       .project h3 {
-        font-size: 1.4em;
+        font-size: 1.2em; /* Smaller to prevent overflow */
+        line-height: 1.3; /* Better line spacing */
+        word-wrap: break-word; /* Prevent overflow */
+        overflow-wrap: break-word; /* Additional overflow protection */
       }
       .project p {
-        font-size: 0.95em;
+        font-size: 0.9em;
+        line-height: 1.4; /* Better readability */
       }
       .project ul li {
         font-size: 0.9em;
