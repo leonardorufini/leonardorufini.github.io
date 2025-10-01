@@ -146,20 +146,19 @@
 
     /* Hamburger icon styling */
     .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text-white); /* White icon for visibility */
-      cursor: pointer;
-      padding: 10px;
-      z-index: 1001;
-      transition: color var(--transition-speed) ease;
-      position: relative; /* For the custom icon */
-      width: 40px; /* Standard size */
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+        display: none;
+        background: none;
+        border: none;
+        color: var(--text-white); /* White icon for visibility */
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1001;
+        transition: color var(--transition-speed) ease;
+        position: relative; /* For the custom icon */
+        width: 40px; /* Standard size */
+        height: 40px;
+        align-items: center;
+        justify-content: center;
     }
     .nav-toggle:hover {
         color: var(--accent-color);
@@ -447,7 +446,7 @@
       }
 
       .nav-toggle {
-        display: flex; /* Changed from block to flex for centered icon */
+        display: flex !important; /* Show only on smartphone */
       }
 
       nav {
