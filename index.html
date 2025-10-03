@@ -411,6 +411,228 @@
       fill: var(--text-white);
     }
 
+    /* Contact Section Styles */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2em;
+      margin-top: 2em;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      padding: 2.5em 2em;
+      border-radius: var(--border-radius-card);
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: all var(--transition-speed) ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      color: var(--text-light);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--box-shadow-hover);
+      border-color: var(--accent-color);
+    }
+
+    .contact-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5em;
+      background: var(--accent-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-speed) ease;
+    }
+
+    .contact-card:hover .contact-icon {
+      background: var(--accent-dark);
+      transform: rotate(360deg);
+    }
+
+    .contact-icon i {
+      font-size: 2.5em;
+      color: var(--text-white);
+    }
+
+    .contact-card h3 {
+      font-size: 1.4em;
+      color: var(--text-light);
+      margin: 0;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    /* Curriculum Section Styles */
+    .cv-container {
+      background: var(--card-bg);
+      padding: 3em 2em;
+      border-radius: var(--border-radius-card);
+      text-align: center;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      max-width: 600px;
+      margin: 2em auto 0;
+    }
+
+    .cv-icon {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 1.5em;
+      background: var(--accent-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-speed) ease;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(193, 41, 46, 0.7);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 20px rgba(193, 41, 46, 0);
+      }
+    }
+
+    .cv-icon i {
+      font-size: 3em;
+      color: var(--text-white);
+    }
+
+    .cv-container h3 {
+      font-size: 1.8em;
+      color: var(--accent-color);
+      margin: 0 0 0.5em 0;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    .cv-container p {
+      font-size: 1.1em;
+      color: var(--text-muted);
+      margin-bottom: 2em;
+      line-height: 1.6;
+    }
+
+    /* About Section Styles */
+    .about-container {
+      margin-top: 2em;
+    }
+
+    .about-intro {
+      display: flex;
+      align-items: center;
+      gap: 2em;
+      margin-bottom: 2.5em;
+      padding-bottom: 2em;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .about-icon {
+      width: 100px;
+      height: 100px;
+      min-width: 100px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(193, 41, 46, 0.4);
+    }
+
+    .about-icon i {
+      font-size: 3em;
+      color: var(--text-white);
+    }
+
+    .about-text h3 {
+      font-size: 2em;
+      color: var(--accent-color);
+      margin: 0 0 0.3em 0;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    .about-subtitle {
+      font-size: 1.1em;
+      color: var(--text-muted);
+      margin: 0;
+      font-style: italic;
+    }
+
+    .about-content {
+      margin-bottom: 3em;
+    }
+
+    .about-content p {
+      font-size: 1.15em;
+      line-height: 1.9;
+      margin-bottom: 1.5em;
+    }
+
+    .about-content strong {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5em;
+      margin-top: 2em;
+    }
+
+    .highlight-card {
+      background: var(--card-bg);
+      padding: 2em 1.5em;
+      border-radius: var(--border-radius-card);
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: all var(--transition-speed) ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--box-shadow-hover);
+      border-color: var(--accent-color);
+    }
+
+    .highlight-card i {
+      font-size: 2.5em;
+      color: var(--accent-color);
+      margin-bottom: 0.5em;
+      display: block;
+    }
+
+    .highlight-card h4 {
+      font-size: 1.3em;
+      color: var(--text-light);
+      margin: 0.5em 0;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    .highlight-card p {
+      font-size: 1em;
+      color: var(--text-muted);
+      margin: 0.5em 0 0 0;
+      line-height: 1.6;
+    }
+
+    .highlight-card span {
+      font-size: 0.9em;
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
     /* Responsive adjustments */
     @media (max-width: 900px) {
         section {
@@ -551,6 +773,69 @@
           width: 22px;
           height: 22px;
       }
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5em;
+      }
+      .contact-card {
+        padding: 2em 1.5em;
+      }
+      .contact-icon {
+        width: 70px;
+        height: 70px;
+      }
+      .contact-icon i {
+        font-size: 2em;
+      }
+      .cv-container {
+        padding: 2em 1.5em;
+        margin: 1.5em auto 0;
+      }
+      .cv-icon {
+        width: 80px;
+        height: 80px;
+      }
+      .cv-icon i {
+        font-size: 2.5em;
+      }
+      .cv-container h3 {
+        font-size: 1.5em;
+      }
+      .cv-container p {
+        font-size: 1em;
+      }
+      .about-intro {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5em;
+      }z
+      .about-icon {
+        width: 80px;
+        height: 80px;
+        min-width: 80px;
+      }
+      .about-icon i {
+        font-size: 2.5em;
+      }
+      .about-text h3 {
+        font-size: 1.6em;
+      }
+      .about-subtitle {
+        font-size: 1em;
+      }
+      .about-highlights {
+        grid-template-columns: 1fr;
+        gap: 1.2em;
+      }
+      .highlight-card {
+        padding: 1.5em 1em;
+      }
+      .highlight-card i {
+        font-size: 2em;
+      }
+      .highlight-card h4 {
+        font-size: 1.2em;
+      }
     }
   </style>
 </head>
@@ -575,12 +860,47 @@
   <!-- Sezione Chi Sono -->
   <section id="about" class="animated-section">
     <h2>About me</h2>
-    <p>Hi! I am Leonardo Rufini, an engineer in computer science who enjoys programming and loves technology.
-      I graduated with a bachelor's degree in engineering in computer science at Sapienza University in Rome, 
-      and I am now attending the Master's degree in Engineering in Computer Science. I love cryptography and attended the <a href="https://cyberchallenge.it" target="_blank" rel="noopener noreferrer">Cyberchallenge</a>
-      with the Sapienza team in 2024.
-      I am currently studying and enjoying advanced cryptography and blockchain, and trying to understand Zero Knowledge cryptographical techniques.
-    </p>
+    
+    <div class="about-container">
+      <div class="about-intro">
+        <div class="about-icon">
+          <i class="fas fa-user-graduate"></i>
+        </div>
+        <div class="about-text">
+          <h3>Hi! I'm Leonardo Rufini</h3>
+          <p class="about-subtitle">Engeneer in computer science</p>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <p>I graduated with a bachelor's degree in Engineering in Computer Science at <b>Sapienza University</b> in Rome, 
+          and I am now pursuing my Master's degree in Engineering in Computer Science.</p>
+        
+        <p>My main interests include <b>cryptography</b> and <b>blockchain technology</b>. 
+          In 2024, I had the honor of participating in <a href="https://cyberchallenge.it" target="_blank" rel="noopener noreferrer">Cyberchallenge</a>
+          with the Sapienza team, which won the national competition. This experience gave me the opportunity to deal with <b> practical hacking </b>challenges and further deepened my passion for cybersecurity.</p>
+        
+        <p> I am currently studying and enjoying advanced cryptography and blockchain, and trying to master Zero Knowledge cryptographical techniques.</p>
+      </div>
+
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <i class="fas fa-graduation-cap"></i>
+          <h4>Education</h4>
+          <p>Eng in Computer Science<br><span>Sapienza University, Rome</span></p>
+        </div>
+        <div class="highlight-card">
+          <i class="fas fa-shield-alt"></i>
+          <h4>Specialization</h4>
+          <p>Cryptography & Security<br><span>Zero Knowledge Proofs</span></p>
+        </div>
+        <div class="highlight-card">
+          <i class="fas fa-trophy"></i>
+          <h4>Achievement</h4>
+          <p>Cyberchallenge 2024<br><span>Sapienza Team Member</span></p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Sezione Progetti -->
@@ -589,24 +909,52 @@
     <div id="project-list">
       <p style="color: var(--text-light);">Loading Github projects ...</p>
     </div>
-  </section>
+    </section>
 
-  <!-- Sezione Contatti -->
-  <section id="contact" class="animated-section">
+    <!-- Sezione Contatti -->
+    <!-- Sezione Contatti -->
+    <section id="contact" class="animated-section">
     <h2>Contact me</h2>
-    <p>You can reach me via email at: <a href="mailto:leo.rufini.459@gmail.com">leo.rufini.459@gmail.com</a></p>
-    <p>Follow me on <a href="https://github.com/pennyw1ze" target="_blank" rel="noopener noreferrer">GitHub</a> to keep up to date with my projects.</p>
-  </section>
+    
+    <div class="contact-grid">
+      <a href="mailto:leo.rufini.459@gmail.com" class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <h3>Email</h3>
+      </a>
 
-  <section id="curriculum" class="animated-section">
+      <a href="https://github.com/pennyw1ze" target="_blank" rel="noopener noreferrer" class="contact-card">
+        <div class="contact-icon">
+          <i class="fab fa-github"></i>
+        </div>
+        <h3>GitHub</h3>
+      </a>
+
+      <a href="https://www.linkedin.com/in/leonardo-rufini-217700335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" class="contact-card">
+        <div class="contact-icon">
+          <i class="fab fa-linkedin"></i>
+        </div>
+        <h3>LinkedIn</h3>
+      </a>
+    </div>
+    </section>
+
+    <section id="curriculum" class="animated-section">
     <h2>Curriculum</h2>
-    <p>Click the button to download my CV from Github.</p>
-    <button type="button" class="download-btn" onclick="downloadCV()">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M5 20h14v-2H5v2zm7-18l-5.5 5.5h4v6h3v-6h4L12 2z"/>
-      </svg>
-      Download CV
-    </button>
+    <div class="cv-container">
+      <div class="cv-icon">
+        <i class="fas fa-file-pdf"></i>
+      </div>
+      <h3>Download My CV</h3>
+      <p>Get a detailed overview of my education, experience, and skills.</p>
+      <button type="button" class="download-btn" onclick="downloadCV()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M5 20h14v-2H5v2zm7-18l-5.5 5.5h4v6h3v-6h4L12 2z"/>
+        </svg>
+        Download CV
+      </button>
+    </div>
     <script>
       function downloadCV() {
         const link = document.createElement('a');
@@ -615,14 +963,14 @@
         link.click();
       }
     </script> 
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer>
+    <!-- Footer -->
+    <footer>
     <p>&copy; 2025 Leonardo Rufini</p>
-  </footer>
+    </footer>
 
-  <!-- Script per caricare dinamicamente i progetti da GitHub e animazioni -->
+    <!-- Script per caricare dinamicamente i progetti da GitHub e animazioni -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // --- Mobile Navigation Toggle ---
