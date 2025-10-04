@@ -10,28 +10,37 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
+
   <!-- Inline CSS -->
   <style>
     /* New Deep Dark Theme CSS Variables */
     :root {
-      /* New Color Palette */
-      --primary-bg: rgb(0, 0, 0); /* rich-black */
-      --secondary-bg: rgb(0, 0, 0); /* oxford-blue */
-      --card-bg: rgb(0, 0, 0); /* Derived from oxford-blue, slightly lighter for distinction */
-      --accent-color: #c1292eff; /* mikado-yellow */
-      --accent-dark: rgb(148, 25, 29); /* gold */
-      --accent-deep: rgb(107, 8, 12); /* A darker shade of mikado-yellow for contrast */
-      --text-light: #e0e0e0ff; /* Lighter grey for better contrast with new darks */
-      --text-muted: #b0b0b0ff; /* Muted grey */
-      --text-white: #ffffffff; /* white */
-      --border-color: rgba(193, 41, 46, 0.699); /* Slightly more visible border */
-      --box-shadow: 0 10px 30px rgba(194, 11, 11, 0.388); /* Brighter, subtle shadow for dark background */
-      --box-shadow-hover: 0 15px 40px rgba(194, 11, 11, 0.388);
-      --border-radius-main: 12px;
-      --border-radius-card: 8px;
-      --transition-speed: 0.2s; /* Faster transition for hover responsiveness */
-      --animation-duration: 0.7s; /* Slightly slower for a smoother fade/slide */
-      --stagger-delay: 0.08s; /* Slightly reduced stagger for faster overall animation */
+     --primary-bg: hsla(240, 11%, 96%, 1);
+     --secondary-bg: hsla(0, 0%, 100%, 1);
+     --card-bg: hsla(0, 0%, 100%, 1);
+     --accent-color: hsla(240, 3%, 13%, 1);
+     --accent-dark: hsla(240, 3%, 8%, 1);
+     --text-light: hsla(240, 3%, 13%, 1);
+     --text-muted: hsla(240, 3%, 8%, 1);
+     --text-white: hsla(0, 0%, 100%, 1);
+     --border-color: hsla(240, 3%, 8%, 0.2);
+     --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+     --box-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.2);
+     --clickable-hover: linear-gradient(
+        270deg,
+        #ff0040,
+        #ff8000,
+        #ffff00,
+        #00ff00,
+        #00ffff,
+        #0080ff,
+        #8000ff,
+        #ff00ff
+      );--border-radius-main: 12px;
+     --border-radius-card: 8px;
+     --transition-speed: 0.2s;
+     --animation-duration: 0.7s;
+     --stagger-delay: 0.08s;
     }
 
     * {
@@ -45,7 +54,7 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
+     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
       margin: 0;
       line-height: 1.8;
       background: var(--primary-bg);
@@ -58,7 +67,7 @@
       color: var(--text-light);
       padding: 1.5em 0; /* Adjusted padding */
       text-align: center;
-      box-shadow: var(--box-shadow);
+      /* box-shadow: var(--box-shadow); */
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -66,22 +75,24 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      border-bottom: 1px solid var(--border-color); /* Subtle border */
+      /* border-bottom: 1px solid var(--border-color);*/
     }
 
     /* Header scroll effect */
     header.scrolled {
-      background-color: rgba(0, 8, 20, 0.95); /* Semi-transparent deepest dark when scrolled */
+      background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white when scrolled */
+      backdrop-filter: blur(10px); /* Add blur effect for modern look */
+      -webkit-backdrop-filter: blur(10px); /* Safari support */
       padding: 0.8em 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow when scrolled */
     }
     
     header h1 {
-      font-family: 'Roboto Mono', monospace;
+      font-family: inherit;
       font-size: 3.4em; /* Even larger, more impactful title */
       margin: 0.2em 0 0.5em 0;
       letter-spacing: 2px;
-      color: var(--accent-color);
-      text-shadow: 0 0 15px rgb(148, 25, 29, 0.6);
+      color: var(--text-light);
       transition: font-size 0.3s ease, margin 0.3s ease;
     }
 
@@ -112,7 +123,7 @@
       color: var(--text-light);
       text-decoration: none;
       font-weight: 600;
-      font-family: 'Poppins', sans-serif;
+      font-family: inherit;
       font-size: 1.15em;
       transition: all var(--transition-speed) ease;
       padding: 8px 15px;
@@ -138,8 +149,9 @@
     }
 
     .nav-list a:hover{
-      color: var(--text-white); /* White on hover for strong contrast */
+      color: var(--text-light);
       transform: translateY(-3px);
+      font-weight: 700;
       /* background-color: var(--accent-deep); Deeper accent background on hover */
       text-decoration: none;
     }
@@ -209,11 +221,11 @@
       margin-top: 5%;
       margin-bottom: 5%;
       background: var(--secondary-bg);
-      box-shadow: var(--box-shadow);
+      /* box-shadow: var(--box-shadow); */
       border-radius: var(--border-radius-main);
       color: var(--text-light);
       position: relative;
-      border: 1px solid var(--border-color);
+      /* border: 1px solid var(--border-color); */
 
       opacity: 0;
       transform: translateY(40px); /* Deeper initial translateY */
@@ -226,14 +238,14 @@
     }
 
     section h2 {
-      font-family: 'Roboto Mono', monospace;
+      font-family: inherit;
       font-size: 2.8em; /* Larger section titles */
       color: var(--accent-color);
       margin-top: 0; /* Ensures consistent top spacing within section */
       margin-bottom: 0.8em;
       border-bottom: 2px solid var(--border-color);
       padding-bottom: 0.6em; /* Slightly more padding */
-      text-shadow: 0 0 10px rgba(255, 0, 8, 0.5);
+      /* text-shadow: 0 0 10px rgba(255, 0, 8, 0.5); */
     }
 
     section p {
@@ -254,12 +266,12 @@
       padding: 2.2em; /* More padding */
       border-radius: var(--border-radius-card);
       color: var(--text-light);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4); /* Deeper initial shadow */
+      box-shadow: var(--box-shadow); /* Deeper initial shadow */
       transition: transform var(--transition-speed) ease-out, box-shadow var(--transition-speed) ease-out, opacity var(--animation-duration) ease-out;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border: 1px solid var(--border-color);
+      /* border: 1px solid var(--border-color); */
 
       opacity: 0;
       transform: translateY(25px); /* Deeper initial translateY */
@@ -276,7 +288,7 @@
     }
 
     .project h3 {
-        font-family: 'Poppins', sans-serif;
+        font-family: inherit;
         font-size: 1.6em; /* Larger project title */
         margin-top: 0;
         margin-bottom: 0.6em;
@@ -289,7 +301,7 @@
     }
 
     .project h3:hover {
-        color: var(--text-white); /* White on project title hover */
+        color: var(--accent-color); /* White on project title hover */
     }
 
     .project hr {
@@ -320,7 +332,7 @@
         background-color: rgba(255, 255, 255, 0.18); /* Brighter background for labels */
         padding: 6px 12px;
         border-radius: 6px;
-        font-family: 'Roboto Mono', monospace;
+        font-family: inherit;
         color: var(--text-muted);
     }
 
@@ -336,8 +348,8 @@
       color: var(--text-muted); /* Muted text for footer */
       width: 100%;
       margin-top: 3em; /* Reduced margin */
-      box-shadow: 0 -10px 30px rgba(194, 11, 11, 0.388); /* Top shadow only with --box-shadow color */
-      border-top: 1px solid var(--border-color); /* Subtle border */
+      box-shadow: 0 -10px 30px var(--box-shadow); /* Top shadow only with --box-shadow color */
+      /* border-top: 1px solid var(--border-color); */
     }
     
     /* Link repository */
@@ -348,20 +360,50 @@
       font-weight: 700;
     }
     .project a:hover{
-      color: var(--text-white); /* White on project link hover */
+      color: var(--accent-color);
       text-decoration: none;
     }
 
     /* General Links */
-    a{
-      color: var(--accent-dark); /* Use a darker accent for general links */
+    a {
+      color: var(--accent-dark);
       text-decoration: none;
-      transition: color var(--transition-speed) ease;
+      transition: all var(--transition-speed) ease;
     }
+
+    /* Hover: rainbow gradient inside the text itself */
     a:hover {
-        color: var(--accent-color); /* main accent on hover */
-        text-decoration: none;
+      background: linear-gradient(
+        270deg,
+        #ff0040,
+        #ff8000,
+        #ffff00,
+        #00ff00,
+        #00ffff,
+        #0080ff,
+        #8000ff,
+        #ff00ff
+      );
+      background-size: 1600% 1600%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbowShift 5s linear infinite;
+      text-decoration: none;
     }
+
+/* Rainbow animation keyframes */
+@keyframes rainbowShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 
     /* Every Section Links */
@@ -379,12 +421,12 @@
         color: var(--text-white);
     }
 
-    /* BUTTON */
+    /* BUTTON BASE STATE */
     .download-btn {
       display: inline-flex;
       align-items: center;
-      padding: 16px 35px; /* Even larger button */
-      background-color: var(--accent-color);
+      padding: 16px 35px;
+      background: var(--accent-color); /* Your custom base color */
       color: var(--text-white);
       font-size: 19px;
       font-weight: 700;
@@ -398,9 +440,12 @@
       letter-spacing: 1.5px;
     }
 
+    /* HOVER STATE — rainbow animation */
     .download-btn:hover {
-      background-color: var(--accent-dark); /* Darker accent on hover */
-      transform: translateY(-6px) scale(1.04); /* More pronounced lift and scale */
+      background: var(--clickable-hover);
+      background-size: 1600% 1600%;
+      animation: rainbowShift 5s linear infinite;
+      transform: translateY(-6px) scale(1.04);
       box-shadow: var(--box-shadow-hover);
     }
 
@@ -424,9 +469,9 @@
       padding: 2.5em 2em;
       border-radius: var(--border-radius-card);
       text-align: center;
-      border: 1px solid var(--border-color);
+      /* border: 1px solid var(--border-color); */
       transition: all var(--transition-speed) ease;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      box-shadow: var(--box-shadow);
       cursor: pointer;
       text-decoration: none;
       display: block;
@@ -434,12 +479,14 @@
     }
 
     .contact-card:hover {
+      color: var(--text-light);
       transform: translateY(-8px) scale(1.02);
       box-shadow: var(--box-shadow-hover);
       border-color: var(--accent-color);
     }
 
     .contact-icon {
+      color: var(--text-white);
       width: 80px;
       height: 80px;
       margin: 0 auto 1.5em;
@@ -452,20 +499,21 @@
     }
 
     .contact-card:hover .contact-icon {
+      color: var(--text-white)  !important;
       background: var(--accent-dark);
       transform: rotate(360deg);
     }
 
     .contact-icon i {
       font-size: 2.5em;
-      color: var(--text-white);
+      color: var(--text-white) !important;
     }
 
     .contact-card h3 {
       font-size: 1.4em;
       color: var(--text-light);
       margin: 0;
-      font-family: 'Roboto Mono', monospace;
+      font-family: inherit;
     }
 
     /* Curriculum Section Styles */
@@ -474,7 +522,7 @@
       padding: 3em 2em;
       border-radius: var(--border-radius-card);
       text-align: center;
-      border: 1px solid var(--border-color);
+      /* border: 1px solid var(--border-color); */
       box-shadow: 0 6px 20px rgba(0,0,0,0.4);
       max-width: 600px;
       margin: 2em auto 0;
@@ -493,17 +541,6 @@
       animation: pulse 2s ease-in-out infinite;
     }
 
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(193, 41, 46, 0.7);
-      }
-      50% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 20px rgba(193, 41, 46, 0);
-      }
-    }
-
     .cv-icon i {
       font-size: 3em;
       color: var(--text-white);
@@ -513,7 +550,7 @@
       font-size: 1.8em;
       color: var(--accent-color);
       margin: 0 0 0.5em 0;
-      font-family: 'Roboto Mono', monospace;
+      font-family: inherit;
     }
 
     .cv-container p {
@@ -534,7 +571,7 @@
       gap: 2em;
       margin-bottom: 2.5em;
       padding-bottom: 2em;
-      border-bottom: 1px solid var(--border-color);
+      /* border-bottom: 1px solid var(--border-color); */
     }
 
     .about-icon {
@@ -546,7 +583,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 30px rgba(193, 41, 46, 0.4);
+      box-shadow: 0 0 30px var(--box-shadow);
     }
 
     .about-icon i {
@@ -558,7 +595,7 @@
       font-size: 2em;
       color: var(--accent-color);
       margin: 0 0 0.3em 0;
-      font-family: 'Roboto Mono', monospace;
+      font-family: inherit;
     }
 
     .about-subtitle {
@@ -595,9 +632,9 @@
       padding: 2em 1.5em;
       border-radius: var(--border-radius-card);
       text-align: center;
-      border: 1px solid var(--border-color);
+      /* border: 1px solid var(--border-color); */
       transition: all var(--transition-speed) ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      box-shadow: var(--box-shadow);
     }
 
     .highlight-card:hover {
@@ -617,7 +654,7 @@
       font-size: 1.3em;
       color: var(--text-light);
       margin: 0.5em 0;
-      font-family: 'Roboto Mono', monospace;
+      font-family: inherit;
     }
 
     .highlight-card p {
@@ -685,7 +722,9 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: var(--primary-bg);
+        background: rgba(255, 255, 255, 0.85); /* More transparent white background */
+        backdrop-filter: blur(20px); /* Frosted glass effect */
+        -webkit-backdrop-filter: blur(20px); /* Safari support */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -710,18 +749,19 @@
       .nav-list a {
           font-size: 1.8em; /* Even larger links for better touch target */
           padding: 18px 30px;
-          color: var(--text-white); /* White for mobile nav links */
+          color: var(--text-light); /* Use theme text color for mobile nav links */
           display: block;
           width: 100%;
       }
       .nav-list a:hover {
-        color: var(--text-white);
+        color: var(--accent-color); /* Accent color on hover */
       }
       .nav-list a::after {
           height: 3px;
+          background: var(--accent-color); /* Accent color for underline */
       }
       .nav-list a.active::after {
-          background: var(--text-white); /* White underline for active mobile link */
+          background: var(--accent-color); /* Accent color underline for active mobile link */
       }
 
 
@@ -837,6 +877,32 @@
         font-size: 1.2em;
       }
     }
+
+    @keyframes pulse {
+      0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(13, 13, 13, 0.7);
+      }
+      50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 20px rgba(13, 13, 13, 0);
+      }
+    }
+
+
+    /* GRADIENT ANIMATION */
+    @keyframes rainbowShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -931,7 +997,7 @@
         <h3>GitHub</h3>
       </a>
 
-      <a href="https://www.linkedin.com/in/leonardo-rufini-217700335" target="_blank" rel="noopener noreferrer" class="contact-card">
+      <a href="https://www.linkedin.com/in/leonardo-rufini-217700335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" class="contact-card">
         <div class="contact-icon">
           <i class="fab fa-linkedin"></i>
         </div>
