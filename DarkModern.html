@@ -13,41 +13,55 @@
 
   <!-- Inline CSS -->
   <style>
-    /* Apple Liquid Glass Theme CSS Variables */
+    /* Professional Dark Theme CSS Variables */
     :root {
-     /* Background gradient - soft blue to purple like iOS */
-     --primary-bg: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-     --secondary-bg: rgba(255, 255, 255, 0.1);
-     --section-bg: rgba(255, 255, 255, 0.08);
-     --card-bg: rgba(255, 255, 255, 0.12);
-     --accent-color: rgba(255, 255, 255, 0.95);
-     --accent-dark: rgba(255, 255, 255, 0.8);
-     --text-light: rgba(255, 255, 255, 0.95);
-     --text-muted: rgba(255, 255, 255, 0.7);
-     --text-white: rgba(255, 255, 255, 1);
-     --border-color: rgba(255, 255, 255, 0.18);
-     --border-glow: rgba(255, 255, 255, 0.4);
-     --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-     --box-shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.15);
+     /* Deep, sophisticated dark background */
+     --primary-bg: #0a0e27;
+     --secondary-bg: #131829;
+     --section-bg: rgba(20, 25, 45, 0.6);
+     --card-bg: rgba(25, 32, 56, 0.5);
+     
+     /* Elegant accent colors - sophisticated teal/cyan */
+     --accent-color: #00d4ff;
+     --accent-secondary: #00a8cc;
+     --accent-muted: #0891b2;
+     --accent-glow: rgba(0, 212, 255, 0.4);
+     
+     /* Text colors for excellent readability */
+     --text-primary: #e8eaf6;
+     --text-secondary: #b8c5d6;
+     --text-muted: #8892a6;
+     --text-white: #ffffff;
+     
+     /* Borders with subtle elegance */
+     --border-color: rgba(100, 120, 150, 0.15);
+     --border-hover: rgba(0, 212, 255, 0.3);
+     --border-bright: rgba(0, 212, 255, 0.5);
+     
+     /* Shadows for depth */
+     --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+     --box-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.6);
+     --glow-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+     
+     /* Gradient accents */
      --glass-highlight: linear-gradient(
        135deg,
-       rgba(255, 255, 255, 0.3) 0%,
-       rgba(255, 255, 255, 0) 50%,
-       rgba(255, 255, 255, 0.1) 100%
+       rgba(0, 212, 255, 0.1) 0%,
+       rgba(0, 168, 204, 0.05) 50%,
+       rgba(0, 212, 255, 0.1) 100%
      );
+     
      --clickable-hover: linear-gradient(
-        270deg,
-        #ff0040,
-        #ff8000,
-        #ffff00,
-        #00ff00,
-        #00ffff,
-        #0080ff,
-        #8000ff,
-        #ff00ff
+        90deg,
+        #00d4ff,
+        #00a8cc,
+        #0891b2,
+        #00a8cc,
+        #00d4ff
       );
-     --border-radius-main: 24px;
-     --border-radius-card: 20px;
+     
+     --border-radius-main: 16px;
+     --border-radius-card: 12px;
      --transition-speed: 0.3s;
      --animation-duration: 0.7s;
      --stagger-delay: 0.08s;
@@ -68,43 +82,45 @@
       margin: 0;
       line-height: 1.8;
       background: var(--primary-bg);
-      background-attachment: fixed;
-      color: var(--text-light);
+      color: var(--text-primary);
       position: relative;
+      min-height: 100vh;
     }
     
-    /* Add animated background particles/gradient */
+    /* Subtle animated gradient overlay */
     body::before {
       content: '';
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #4a5dc7, #5a3a8f, #c94fa0, #4a5dc7);
-      background-size: 400% 400%;
-      z-index: -1;
-      animation: gradientShift 30s ease infinite;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(
+        ellipse at top left,
+        rgba(0, 212, 255, 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at bottom right,
+        rgba(0, 168, 204, 0.06) 0%,
+        transparent 50%
+      );
+      pointer-events: none;
+      z-index: 0;
+      animation: subtleShift 20s ease-in-out infinite alternate;
     }
     
-    @keyframes gradientShift {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+    @keyframes subtleShift {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
     }
     
     /* Header e Navbar */
     header {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(30px) saturate(180%);
-      -webkit-backdrop-filter: blur(30px) saturate(180%);
-      color: var(--text-light);
+      background: rgba(20, 25, 45, 0.85);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      color: var(--text-primary);
       padding: 1.5em 0;
       text-align: center;
       position: sticky;
@@ -114,18 +130,48 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      border-bottom: 1px solid var(--border-color);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+    
+    /* Gradient border bottom for header */
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 212, 255, 0.3) 10%,
+        rgba(0, 212, 255, 0.8) 50%,
+        rgba(0, 212, 255, 0.3) 90%,
+        transparent 100%
+      );
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
     }
 
     /* Header scroll effect */
     header.scrolled {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(40px) saturate(200%);
-      -webkit-backdrop-filter: blur(40px) saturate(200%);
+      background: rgba(20, 25, 45, 0.95);
+      backdrop-filter: blur(30px) saturate(180%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
       padding: 0.8em 0;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-      border-bottom: 1px solid var(--border-glow);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    }
+    
+    header.scrolled::after {
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 212, 255, 0.4) 10%,
+        rgba(0, 212, 255, 1) 50%,
+        rgba(0, 212, 255, 0.4) 90%,
+        transparent 100%
+      );
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.7);
     }
     
     header h1 {
@@ -133,8 +179,9 @@
       font-size: 3.4em; /* Even larger, more impactful title */
       margin: 0.2em 0 0.5em 0;
       letter-spacing: 2px;
-      color: var(--text-light);
+      color: var(--text-primary);
       transition: font-size 0.3s ease, margin 0.3s ease;
+      text-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
     }
 
     header.scrolled h1 {
@@ -161,7 +208,7 @@
     }
     
     .nav-list a {
-      color: var(--text-light);
+      color: var(--text-secondary);
       text-decoration: none;
       font-weight: 600;
       font-family: inherit;
@@ -188,27 +235,25 @@
     .nav-list a:hover::after,
     .nav-list a.active::after {
         width: 100%;
-        background: var(--clickable-hover);
-        background-size: 1600% 1600%;
-        animation: rainbowShift 2s linear infinite;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4);
+        background: var(--accent-color);
+        box-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
     }
 
     .nav-list a:hover{
-      color: var(--text-light);
+      color: var(--accent-color);
       transform: translateY(-3px);
       font-weight: 700;
-      /* background-color: var(--accent-deep); Deeper accent background on hover */
       text-decoration: none;
+      text-shadow: 0 0 10px var(--accent-glow);
     }
 
     /* Modern Glass Toggle Button */
     .nav-toggle {
         display: none;
-        background: rgba(255, 255, 255, 0.15);
+        background: rgba(25, 32, 56, 0.8);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        border: 1.5px solid rgba(255, 255, 255, 0.3);
+        border: 1.5px solid var(--border-color);
         border-radius: 50%;
         cursor: pointer;
         padding: 0;
@@ -250,7 +295,7 @@
       content: "\f00d"; /* Font Awesome X icon code */
     }
     
-    /* Sezioni - Glass Morphism Effect with Soap Bubble */
+    /* Sezioni - Elegant Dark Glass Morphism */
     section {
       padding: 4.5em;
       max-width: 1000px;
@@ -258,31 +303,30 @@
       margin-top: 5%;
       margin-bottom: 5%;
       
-      /* Base glass effect - will be overlaid with gradient */
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(30px) saturate(180%);
-      -webkit-backdrop-filter: blur(30px) saturate(180%);
+      /* Sophisticated dark glass effect */
+      background: var(--section-bg);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
       
       border-radius: var(--border-radius-main);
-      color: var(--text-light);
+      color: var(--text-primary);
       position: relative;
       overflow: hidden;
       
-      /* Shiny border */
-      border: 1.5px solid var(--border-color);
+      /* Elegant border with accent */
+      border: 1px solid var(--border-color);
       
-      /* Glass highlight overlay */
+      /* Deep shadows for depth */
       box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+        0 8px 32px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(0, 212, 255, 0.1);
 
       opacity: 0;
       transform: translateY(40px);
       transition: all var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    /* Soap bubble gradient - opaque edges, transparent center - 10/10 INTENSITY */
+    /* Enhanced accent glow gradient - More Visible */
     section::before {
       content: '';
       position: absolute;
@@ -292,60 +336,53 @@
       bottom: 0;
       border-radius: var(--border-radius-main);
       background: radial-gradient(
+        ellipse at top left,
+        rgba(0, 212, 255, 0.15) 0%,
+        rgba(0, 212, 255, 0.08) 25%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse at bottom right,
+        rgba(0, 168, 204, 0.12) 0%,
+        rgba(0, 168, 204, 0.06) 25%,
+        transparent 60%
+      ),
+      radial-gradient(
         ellipse at center,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.02) 20%,
-        rgba(255, 255, 255, 0.08) 50%,
-        rgba(255, 255, 255, 0.20) 80%,
-        rgba(255, 255, 255, 0.35) 100%
+        rgba(0, 212, 255, 0.03) 0%,
+        transparent 70%
       );
       pointer-events: none;
       z-index: 1;
     }
     
-    /* Shiny light reflection on the glass - like soap bubble iridescence */
+    /* Enhanced shine effect */
     section::after {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      height: 250px;
       background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.4) 0%,
-        rgba(255, 255, 255, 0.2) 20%,
-        transparent 40%,
-        transparent 60%,
-        rgba(255, 200, 255, 0.15) 80%,
-        rgba(200, 220, 255, 0.15) 100%
+        180deg,
+        rgba(0, 212, 255, 0.15) 0%,
+        rgba(0, 212, 255, 0.08) 30%,
+        transparent 100%
       );
-      border-radius: var(--border-radius-main);
+      border-radius: var(--border-radius-main) var(--border-radius-main) 0 0;
       pointer-events: none;
-      opacity: 0.6;
       z-index: 2;
-      animation: bubbleShine 8s ease-in-out infinite;
-    }
-    
-    /* Subtle shine animation */
-    @keyframes bubbleShine {
-      0%, 100% {
-        transform: rotate(0deg) scale(1);
-        opacity: 0.5;
-      }
-      50% {
-        transform: rotate(5deg) scale(1.05);
-        opacity: 0.7;
-      }
     }
     
     /* Hover effect for sections */
     section:hover {
-      border-color: var(--border-glow);
+      border-color: var(--border-hover);
       box-shadow: 
-        0 12px 48px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+        0 16px 48px rgba(0, 0, 0, 0.8),
+        0 0 0 1px var(--border-hover),
+        inset 0 1px 0 rgba(0, 212, 255, 0.2),
+        var(--glow-shadow);
       transform: translateY(-5px);
     }
     
@@ -367,8 +404,8 @@
       border-bottom: 2px solid var(--border-color);
       padding-bottom: 0.6em; /* Slightly more padding */
       position: relative;
-      z-index: 3; /* Above bubble effects */
-      /* text-shadow: 0 0 10px rgba(255, 0, 8, 0.5); */
+      z-index: 3; /* Above effects */
+      text-shadow: 0 0 20px var(--accent-glow);
     }
 
     section p {
@@ -376,7 +413,8 @@
         margin-bottom: 1.2em;
         line-height: 1.9;
         position: relative;
-        z-index: 3; /* Above bubble effects */
+        z-index: 3; /* Above effects */
+        color: var(--text-secondary);
     }
     
     #project-list {
@@ -389,19 +427,18 @@
     }
 
     .project {
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: var(--card-bg);
+      backdrop-filter: blur(15px) saturate(150%);
+      -webkit-backdrop-filter: blur(15px) saturate(150%);
       padding: 2.2em;
       border-radius: var(--border-radius-card);
-      color: var(--text-light);
+      color: var(--text-primary);
       
-      /* Glass effect with shine */
-      border: 1.5px solid var(--border-color);
+      /* Elegant border and shadow */
+      border: 1px solid var(--border-color);
       box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(0, 212, 255, 0.05);
       
       transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
@@ -414,7 +451,7 @@
       transform: translateY(25px);
     }
     
-    /* Glass highlight for projects */
+    /* Subtle top gradient */
     .project::before {
       content: '';
       position: absolute;
@@ -424,8 +461,8 @@
       height: 50%;
       background: linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.2) 0%,
-        rgba(255, 255, 255, 0) 100%
+        rgba(0, 212, 255, 0.03) 0%,
+        transparent 100%
       );
       pointer-events: none;
       border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
@@ -438,12 +475,12 @@
 
     .project:hover {
       transform: translateY(-10px) scale(1.02);
-      border-color: var(--border-glow);
-      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--border-hover);
       box-shadow: 
-        0 12px 48px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+        0 16px 48px rgba(0, 0, 0, 0.7),
+        0 0 0 1px var(--border-hover),
+        inset 0 1px 0 rgba(0, 212, 255, 0.1),
+        var(--glow-shadow);
     }
 
     .project h3 {
@@ -457,6 +494,7 @@
         overflow-wrap: break-word; /* Alternative for word-wrap */
         white-space: normal; /* Ensures text wraps normally */
         line-height: 1.3; /* Improves readability of wrapped titles */
+        text-shadow: 0 0 10px var(--accent-glow);
     }
 
     .project h3:hover {
@@ -465,7 +503,7 @@
 
     .project hr {
         border: none;
-        border-top: 1px solid rgba(255, 255, 255, 0.15); /* Slightly more visible separator */
+        border-top: 1px solid var(--border-color);
         margin: 1.2em 0;
     }
 
@@ -473,7 +511,7 @@
         font-size: 1.05em; /* Slightly larger project description */
         margin-bottom: 1.5em;
         flex-grow: 1;
-        color: var(--text-muted); /* Muted text for description */
+        color: var(--text-secondary); /* Readable secondary text */
     }
 
     .project ul {
@@ -481,36 +519,57 @@
       padding: 0;
       margin-top: 1.8em; /* More space */
       font-size: 0.98em;
-      color: var(--text-light);
+      color: var(--text-secondary);
       display: flex;
       flex-wrap: wrap;
       gap: 18px; /* More space between items */
     }
 
     .project ul li {
-        background-color: rgba(255, 255, 255, 0.18); /* Brighter background for labels */
+        background-color: rgba(0, 212, 255, 0.08); /* Subtle accent background */
         padding: 6px 12px;
         border-radius: 6px;
         font-family: inherit;
-        color: var(--text-muted);
+        color: var(--text-secondary);
+        border: 1px solid rgba(0, 212, 255, 0.2);
     }
 
     .project ul li strong {
         color: var(--accent-color);
+        text-shadow: 0 0 5px var(--accent-glow);
     }
     
-    /* Footer - Glass Effect */
+    /* Footer - Dark Elegant */
     footer {
       text-align: center;
       padding: 2.5em;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(30px) saturate(180%);
-      -webkit-backdrop-filter: blur(30px) saturate(180%);
+      background: rgba(20, 25, 45, 0.8);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
       color: var(--text-muted);
       width: 100%;
       margin-top: 3em;
-      box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
-      border-top: 1px solid var(--border-color);
+      box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+    
+    /* Gradient border top for footer */
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 212, 255, 0.3) 10%,
+        rgba(0, 212, 255, 0.8) 50%,
+        rgba(0, 212, 255, 0.3) 90%,
+        transparent 100%
+      );
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
     }
     
     /* Link repository */
@@ -527,46 +586,19 @@
 
     /* General Links */
     a {
-      color: var(--accent-dark);
+      color: var(--accent-color);
       text-decoration: none;
       transition: all var(--transition-speed) ease;
     }
 
-    /* Hover: rainbow gradient inside the text itself - EXCEPT contact cards */
+    /* Hover: elegant glow effect */
     a:hover:not(.contact-card) {
-      background: linear-gradient(
-        270deg,
-        #ff0040,
-        #ff8000,
-        #ffff00,
-        #00ff00,
-        #00ffff,
-        #0080ff,
-        #8000ff,
-        #ff00ff
-      );
-      background-size: 1600% 1600%;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: rainbowShift 5s linear infinite;
+      color: var(--accent-color);
+      text-shadow: 0 0 10px var(--accent-glow);
       text-decoration: none;
     }
 
-    /* Rainbow animation keyframes - CONSOLIDATED */
-    @keyframes rainbowShift {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    /* Every Section Links - except contact (handled separately) */
+    /* Every Section Links */
     section#about a,
     section#projects a {
         color: var(--accent-color);
@@ -576,27 +608,25 @@
 
     section#about a:hover,
     section#projects a:hover {
-        color: var(--text-white);
+        text-shadow: 0 0 15px var(--accent-glow);
     }
 
-    /* BUTTON BASE STATE - Glass Effect */
+    /* BUTTON BASE STATE - Elegant Dark Design */
     .download-btn {
       display: inline-flex;
       align-items: center;
       padding: 16px 35px;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: var(--text-white);
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+      color: var(--primary-bg);
       font-size: 19px;
       font-weight: 700;
-      border: 1.5px solid var(--border-glow);
+      border: 1px solid var(--accent-color);
       border-radius: var(--border-radius-main);
       text-decoration: none;
       transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: 
-        0 4px 16px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        0 4px 16px var(--accent-glow),
+        0 0 30px var(--accent-glow);
       cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 1.5px;
@@ -604,23 +634,20 @@
       z-index: 1;
     }
 
-    /* HOVER STATE — rainbow animation */
+    /* HOVER STATE — elegant glow */
     .download-btn:hover {
-      background: var(--clickable-hover);
-      background-size: 1600% 1600%;
-      animation: rainbowShift 5s linear infinite;
+      background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-color) 100%);
       transform: translateY(-6px) scale(1.04);
-      border-color: rgba(255, 255, 255, 0.5);
       box-shadow: 
-        0 8px 24px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        0 8px 24px var(--accent-glow),
+        0 0 50px var(--accent-glow);
     }
 
     .download-btn svg {
       margin-right: 14px;
       width: 26px; /* Larger icon */
       height: 26px;
-      fill: var(--text-white);
+      fill: currentColor;
     }
 
     /* ========== CONTACT SECTION STYLES - COMPLETE REWRITE ========== */
@@ -635,10 +662,10 @@
 
     /* Contact Card - Base State */
     .contact-card {
-      /* Glass morphism background */
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      /* Dark glass morphism */
+      background: var(--card-bg);
+      backdrop-filter: blur(15px) saturate(150%);
+      -webkit-backdrop-filter: blur(15px) saturate(150%);
       
       /* Layout */
       padding: 2.5em 2em;
@@ -649,11 +676,10 @@
       overflow: hidden;
       
       /* Border and shadow */
-      border: 1.5px solid var(--border-color);
+      border: 1px solid var(--border-color);
       box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(0, 212, 255, 0.05);
       
       /* Interaction */
       cursor: pointer;
@@ -661,7 +687,7 @@
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    /* Glass highlight overlay */
+    /* Subtle top gradient */
     .contact-card::before {
       content: '';
       position: absolute;
@@ -671,23 +697,23 @@
       height: 50%;
       background: linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.2) 0%,
-        rgba(255, 255, 255, 0) 100%
+        rgba(0, 212, 255, 0.03) 0%,
+        transparent 100%
       );
       pointer-events: none;
       border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
       z-index: 1;
     }
 
-    /* Contact Card - Hover State - SIMPLIFIED */
+    /* Contact Card - Hover State */
     .contact-card:hover {
       transform: translateY(-8px);
-      border-color: var(--border-glow);
-      background: rgba(255, 255, 255, 0.18);
+      border-color: var(--border-hover);
       box-shadow: 
-        0 12px 48px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+        0 16px 48px rgba(0, 0, 0, 0.7),
+        0 0 0 1px var(--border-hover),
+        inset 0 1px 0 rgba(0, 212, 255, 0.1),
+        var(--glow-shadow);
     }
 
     /* Contact Icon Circle - Base State */
@@ -702,15 +728,16 @@
       position: relative;
       z-index: 2;
       
-      /* Glass effect */
-      background: rgba(255, 255, 255, 0.2);
+      /* Dark glass effect */
+      background: rgba(0, 212, 255, 0.1);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-radius: 50%;
-      border: 1px solid var(--border-glow);
+      border: 1px solid var(--border-hover);
       box-shadow: 
-        0 4px 16px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        0 4px 16px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(0, 212, 255, 0.2),
+        0 0 20px var(--accent-glow);
       
       /* Transition */
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -718,26 +745,29 @@
 
     /* Contact Icon Circle - Hover State with rotation */
     .contact-card:hover .contact-icon {
-      background: rgba(255, 255, 255, 0.3);
+      background: rgba(0, 212, 255, 0.15);
       transform: rotate(360deg) scale(1.05);
+      border-color: var(--accent-color);
       box-shadow: 
-        0 8px 24px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        0 8px 24px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(0, 212, 255, 0.3),
+        0 0 30px var(--accent-glow);
     }
 
     /* Icon itself - Always visible */
     .contact-icon i {
       font-size: 2.5em;
-      color: rgba(255, 255, 255, 0.95);
+      color: var(--accent-color);
       transition: all 0.3s ease;
       position: relative;
       z-index: 3;
+      filter: drop-shadow(0 0 10px var(--accent-glow));
     }
 
-    /* Contact Card Title - Rainbow effect like other links */
+    /* Contact Card Title */
     .contact-card h3 {
       font-size: 1.4em;
-      color: var(--accent-color);
+      color: var(--text-primary);
       margin: 0;
       font-family: inherit;
       font-weight: 600;
@@ -746,14 +776,10 @@
       z-index: 2;
     }
     
-    /* Title on hover - rainbow gradient effect */
+    /* Title on hover - accent glow */
     .contact-card:hover h3 {
-      background: var(--clickable-hover);
-      background-size: 1600% 1600%;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: rainbowShift 5s linear infinite;
+      color: var(--accent-color);
+      text-shadow: 0 0 15px var(--accent-glow);
     }
 
     /* Curriculum Section Styles - Glass Effect */
