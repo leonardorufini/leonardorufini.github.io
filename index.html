@@ -10,28 +10,61 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
+
   <!-- Inline CSS -->
   <style>
-    /* New Deep Dark Theme CSS Variables */
+    /* Professional Dark Theme CSS Variables */
     :root {
-      /* New Color Palette */
-      --primary-bg: rgb(0, 0, 0); /* rich-black */
-      --secondary-bg: rgb(0, 0, 0); /* oxford-blue */
-      --card-bg: rgb(0, 0, 0); /* Derived from oxford-blue, slightly lighter for distinction */
-      --accent-color: #c1292eff; /* mikado-yellow */
-      --accent-dark: rgb(148, 25, 29); /* gold */
-      --accent-deep: rgb(107, 8, 12); /* A darker shade of mikado-yellow for contrast */
-      --text-light: #e0e0e0ff; /* Lighter grey for better contrast with new darks */
-      --text-muted: #b0b0b0ff; /* Muted grey */
-      --text-white: #ffffffff; /* white */
-      --border-color: rgba(193, 41, 46, 0.699); /* Slightly more visible border */
-      --box-shadow: 0 10px 30px rgba(194, 11, 11, 0.388); /* Brighter, subtle shadow for dark background */
-      --box-shadow-hover: 0 15px 40px rgba(194, 11, 11, 0.388);
-      --border-radius-main: 12px;
-      --border-radius-card: 8px;
-      --transition-speed: 0.2s; /* Faster transition for hover responsiveness */
-      --animation-duration: 0.7s; /* Slightly slower for a smoother fade/slide */
-      --stagger-delay: 0.08s; /* Slightly reduced stagger for faster overall animation */
+     /* Deep, sophisticated dark background */
+     --primary-bg: #0a0e27;
+     --secondary-bg: #131829;
+     --section-bg: rgba(20, 25, 45, 0.6);
+     --card-bg: rgba(25, 32, 56, 0.5);
+     
+     /* Elegant accent colors - sophisticated teal/cyan */
+     --accent-color: #00d4ff;
+     --accent-secondary: #00a8cc;
+     --accent-muted: #0891b2;
+     --accent-glow: rgba(0, 212, 255, 0.4);
+     
+     /* Text colors for excellent readability */
+     --text-primary: #e8eaf6;
+     --text-secondary: #b8c5d6;
+     --text-muted: #8892a6;
+     --text-white: #ffffff;
+     
+     /* Borders with subtle elegance */
+     --border-color: rgba(100, 120, 150, 0.15);
+     --border-hover: rgba(0, 212, 255, 0.3);
+     --border-bright: rgba(0, 212, 255, 0.5);
+     
+     /* Shadows for depth */
+     --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+     --box-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.6);
+     --glow-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+     
+     /* Gradient accents */
+     --glass-highlight: linear-gradient(
+       135deg,
+       rgba(0, 212, 255, 0.1) 0%,
+       rgba(0, 168, 204, 0.05) 50%,
+       rgba(0, 212, 255, 0.1) 100%
+     );
+     
+     --clickable-hover: linear-gradient(
+        90deg,
+        #00d4ff,
+        #00a8cc,
+        #0891b2,
+        #00a8cc,
+        #00d4ff
+      );
+     
+     --border-radius-main: 16px;
+     --border-radius-card: 12px;
+     --transition-speed: 0.3s;
+     --animation-duration: 0.7s;
+     --stagger-delay: 0.08s;
     }
 
     * {
@@ -45,44 +78,110 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
+     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
       margin: 0;
       line-height: 1.8;
       background: var(--primary-bg);
-      color: var(--text-light);
+      color: var(--text-primary);
+      position: relative;
+      min-height: 100vh;
+    }
+    
+    /* Subtle animated gradient overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(
+        ellipse at top left,
+        rgba(0, 212, 255, 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at bottom right,
+        rgba(0, 168, 204, 0.06) 0%,
+        transparent 50%
+      );
+      pointer-events: none;
+      z-index: 0;
+      animation: subtleShift 20s ease-in-out infinite alternate;
+    }
+    
+    @keyframes subtleShift {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
     }
     
     /* Header e Navbar */
     header {
-      background: var(--secondary-bg); /* Use deepest dark */
-      color: var(--text-light);
-      padding: 1.5em 0; /* Adjusted padding */
+      background: rgba(20, 25, 45, 0.85);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      color: var(--text-primary);
+      padding: 1.5em 0;
       text-align: center;
-      box-shadow: var(--box-shadow);
       position: sticky;
       top: 0;
       z-index: 1000;
-      transition: background-color 0.4s ease, padding 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
       align-items: center;
-      border-bottom: 1px solid var(--border-color); /* Subtle border */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+    
+    /* Gradient border bottom for header */
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 212, 255, 0.3) 10%,
+        rgba(0, 212, 255, 0.8) 50%,
+        rgba(0, 212, 255, 0.3) 90%,
+        transparent 100%
+      );
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
     }
 
     /* Header scroll effect */
     header.scrolled {
-      background-color: rgba(0, 8, 20, 0.95); /* Semi-transparent deepest dark when scrolled */
+      background: rgba(20, 25, 45, 0.95);
+      backdrop-filter: blur(30px) saturate(180%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
       padding: 0.8em 0;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    }
+    
+    header.scrolled::after {
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 212, 255, 0.4) 10%,
+        rgba(0, 212, 255, 1) 50%,
+        rgba(0, 212, 255, 0.4) 90%,
+        transparent 100%
+      );
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.7);
     }
     
     header h1 {
-      font-family: 'Roboto Mono', monospace;
+      font-family: inherit;
       font-size: 3.4em; /* Even larger, more impactful title */
       margin: 0.2em 0 0.5em 0;
       letter-spacing: 2px;
-      color: var(--accent-color);
-      text-shadow: 0 0 15px rgb(148, 25, 29, 0.6);
+      color: var(--text-primary);
       transition: font-size 0.3s ease, margin 0.3s ease;
+      text-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
     }
 
     header.scrolled h1 {
@@ -109,10 +208,10 @@
     }
     
     .nav-list a {
-      color: var(--text-light);
+      color: var(--text-secondary);
       text-decoration: none;
       font-weight: 600;
-      font-family: 'Poppins', sans-serif;
+      font-family: inherit;
       font-size: 1.15em;
       transition: all var(--transition-speed) ease;
       padding: 8px 15px;
@@ -130,94 +229,165 @@
         left: 50%;
         transform: translateX(-50%);
         transition: width var(--transition-speed) ease;
+        box-shadow: 0 0 0px transparent;
     }
 
     .nav-list a:hover::after,
     .nav-list a.active::after {
         width: 100%;
+        background: var(--accent-color);
+        box-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
     }
 
     .nav-list a:hover{
-      color: var(--text-white); /* White on hover for strong contrast */
+      color: var(--accent-color);
       transform: translateY(-3px);
-      /* background-color: var(--accent-deep); Deeper accent background on hover */
+      font-weight: 700;
       text-decoration: none;
+      text-shadow: 0 0 10px var(--accent-glow);
     }
 
-    /* Hamburger icon styling */
+    /* Modern Glass Toggle Button */
     .nav-toggle {
         display: none;
-        background: none;
-        border: none;
-        color: var(--accent-color); /* Accent color for visibility */
+        background: rgba(25, 32, 56, 0.8);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1.5px solid var(--border-color);
+        border-radius: 50%;
         cursor: pointer;
-        padding: 10px;
+        padding: 0;
         z-index: 1001;
-        transition: color var(--transition-speed) ease;
-        position: relative; /* For the custom icon */
-        width: 40px; /* Standard size */
-        height: 40px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        width: 50px;
+        height: 50px;
         align-items: center;
         justify-content: center;
-    }
-    .nav-toggle:hover {
-        color: var(--accent-color);
-    }
-    /* Custom Hamburger Icon */
-    .nav-toggle span {
-      display: block;
-      width: 30px;
-      height: 3px;
-      background: var(--accent-color);
-      border-radius: 3px;
-      position: absolute;
-      transition: all 0.3s ease;
-    }
-    .nav-toggle span:before,
-    .nav-toggle span:after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: var(--accent-color);
-      border-radius: 3px;
-      transition: all 0.3s ease;
-    }
-    .nav-toggle span:before {
-      transform: translateY(-10px);
-    }
-    .nav-toggle span:after {
-      transform: translateY(10px);
-    }
-
-    /* Cross icon animation */
-    .nav-toggle.active span {
-      background: transparent;
-    }
-    .nav-toggle.active span:before {
-      transform: translateY(0) rotate(45deg);
-    }
-    .nav-toggle.active span:after {
-      transform: translateY(0) rotate(-45deg);
+        box-shadow: 
+          0 4px 16px rgba(0, 0, 0, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
     
-    /* Sezioni */
+    .nav-toggle:hover {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.5);
+        transform: scale(1.05);
+        box-shadow: 
+          0 6px 20px rgba(0, 0, 0, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+    
+    /* Icon inside the button */
+    .nav-toggle i {
+      font-size: 1.4em;
+      color: rgba(255, 255, 255, 0.95);
+      transition: all 0.3s ease;
+    }
+    
+    /* When nav is active, change icon */
+    .nav-toggle.active {
+      background: rgba(255, 255, 255, 0.2);
+      transform: rotate(90deg);
+    }
+    
+    .nav-toggle.active i:before {
+      content: "\f00d"; /* Font Awesome X icon code */
+    }
+    
+    /* Sezioni - Elegant Dark Glass Morphism */
     section {
-      padding: 4.5em; /* More internal padding */
+      padding: 4.5em;
       max-width: 1000px;
-      margin: 2.5em auto; /* Reduced margin between sections */
+      margin: 2.5em auto;
       margin-top: 5%;
       margin-bottom: 5%;
-      background: var(--secondary-bg);
-      box-shadow: var(--box-shadow);
+      
+      /* Sophisticated dark glass effect */
+      background: var(--section-bg);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      
       border-radius: var(--border-radius-main);
-      color: var(--text-light);
+      color: var(--text-primary);
       position: relative;
+      overflow: hidden;
+      
+      /* Elegant border with accent */
       border: 1px solid var(--border-color);
+      
+      /* Deep shadows for depth */
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(0, 212, 255, 0.1);
 
       opacity: 0;
-      transform: translateY(40px); /* Deeper initial translateY */
-      transition: opacity var(--animation-duration) ease-out, transform var(--animation-duration) ease-out;
+      transform: translateY(40px);
+      transition: all var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Enhanced accent glow gradient - More Visible */
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: var(--border-radius-main);
+      background: radial-gradient(
+        ellipse at top left,
+        rgba(0, 212, 255, 0.15) 0%,
+        rgba(0, 212, 255, 0.08) 25%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse at bottom right,
+        rgba(0, 168, 204, 0.12) 0%,
+        rgba(0, 168, 204, 0.06) 25%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse at center,
+        rgba(0, 212, 255, 0.03) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    /* Enhanced shine effect */
+    section::after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      height: 250px;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 212, 255, 0.15) 0%,
+        rgba(0, 212, 255, 0.08) 30%,
+        transparent 100%
+      );
+      border-radius: var(--border-radius-main) var(--border-radius-main) 0 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+    
+    /* Hover effect for sections */
+    section:hover {
+      border-color: var(--border-hover);
+      box-shadow: 
+        0 16px 48px rgba(0, 0, 0, 0.8),
+        0 0 0 1px var(--border-hover),
+        inset 0 1px 0 rgba(0, 212, 255, 0.2),
+        var(--glow-shadow);
+      transform: translateY(-5px);
+    }
+    
+    section:hover::after {
+      opacity: 0.8;
     }
 
     section.is-visible {
@@ -226,20 +396,25 @@
     }
 
     section h2 {
-      font-family: 'Roboto Mono', monospace;
+      font-family: inherit;
       font-size: 2.8em; /* Larger section titles */
       color: var(--accent-color);
       margin-top: 0; /* Ensures consistent top spacing within section */
       margin-bottom: 0.8em;
       border-bottom: 2px solid var(--border-color);
       padding-bottom: 0.6em; /* Slightly more padding */
-      text-shadow: 0 0 10px rgba(255, 0, 8, 0.5);
+      position: relative;
+      z-index: 3; /* Above effects */
+      text-shadow: 0 0 20px var(--accent-glow);
     }
 
     section p {
         font-size: 1.15em;
         margin-bottom: 1.2em;
         line-height: 1.9;
+        position: relative;
+        z-index: 3; /* Above effects */
+        color: var(--text-secondary);
     }
     
     #project-list {
@@ -247,22 +422,50 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive min-width */
       gap: 2.2em; /* More space between projects */
       margin-top: 2.5em;
+      position: relative;
+      z-index: 3; /* Above bubble effects */
     }
 
     .project {
       background: var(--card-bg);
-      padding: 2.2em; /* More padding */
+      backdrop-filter: blur(15px) saturate(150%);
+      -webkit-backdrop-filter: blur(15px) saturate(150%);
+      padding: 2.2em;
       border-radius: var(--border-radius-card);
-      color: var(--text-light);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4); /* Deeper initial shadow */
-      transition: transform var(--transition-speed) ease-out, box-shadow var(--transition-speed) ease-out, opacity var(--animation-duration) ease-out;
+      color: var(--text-primary);
+      
+      /* Elegant border and shadow */
+      border: 1px solid var(--border-color);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(0, 212, 255, 0.05);
+      
+      transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
 
       opacity: 0;
-      transform: translateY(25px); /* Deeper initial translateY */
+      transform: translateY(25px);
+    }
+    
+    /* Subtle top gradient */
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 212, 255, 0.03) 0%,
+        transparent 100%
+      );
+      pointer-events: none;
+      border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
     }
 
     .project.is-visible {
@@ -271,12 +474,17 @@
     }
 
     .project:hover {
-      transform: translateY(-10px) scale(1.03); /* More pronounced lift effect */
-      box-shadow: var(--box-shadow-hover);
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--border-hover);
+      box-shadow: 
+        0 16px 48px rgba(0, 0, 0, 0.7),
+        0 0 0 1px var(--border-hover),
+        inset 0 1px 0 rgba(0, 212, 255, 0.1),
+        var(--glow-shadow);
     }
 
     .project h3 {
-        font-family: 'Poppins', sans-serif;
+        font-family: inherit;
         font-size: 1.6em; /* Larger project title */
         margin-top: 0;
         margin-bottom: 0.6em;
@@ -286,15 +494,16 @@
         overflow-wrap: break-word; /* Alternative for word-wrap */
         white-space: normal; /* Ensures text wraps normally */
         line-height: 1.3; /* Improves readability of wrapped titles */
+        text-shadow: 0 0 10px var(--accent-glow);
     }
 
     .project h3:hover {
-        color: var(--text-white); /* White on project title hover */
+        color: var(--accent-color); /* White on project title hover */
     }
 
     .project hr {
         border: none;
-        border-top: 1px solid rgba(255, 255, 255, 0.15); /* Slightly more visible separator */
+        border-top: 1px solid var(--border-color);
         margin: 1.2em 0;
     }
 
@@ -302,7 +511,7 @@
         font-size: 1.05em; /* Slightly larger project description */
         margin-bottom: 1.5em;
         flex-grow: 1;
-        color: var(--text-muted); /* Muted text for description */
+        color: var(--text-secondary); /* Readable secondary text */
     }
 
     .project ul {
@@ -310,34 +519,57 @@
       padding: 0;
       margin-top: 1.8em; /* More space */
       font-size: 0.98em;
-      color: var(--text-light);
+      color: var(--text-secondary);
       display: flex;
       flex-wrap: wrap;
       gap: 18px; /* More space between items */
     }
 
     .project ul li {
-        background-color: rgba(255, 255, 255, 0.18); /* Brighter background for labels */
+        background-color: rgba(0, 212, 255, 0.08); /* Subtle accent background */
         padding: 6px 12px;
         border-radius: 6px;
-        font-family: 'Roboto Mono', monospace;
-        color: var(--text-muted);
+        font-family: inherit;
+        color: var(--text-secondary);
+        border: 1px solid rgba(0, 212, 255, 0.2);
     }
 
     .project ul li strong {
         color: var(--accent-color);
+        text-shadow: 0 0 5px var(--accent-glow);
     }
     
-    /* Footer */
+    /* Footer - Dark Elegant */
     footer {
       text-align: center;
-      padding: 2.5em; /* More padding */
-      background: var(--secondary-bg);
-      color: var(--text-muted); /* Muted text for footer */
+      padding: 2.5em;
+      background: rgba(20, 25, 45, 0.8);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      color: var(--text-muted);
       width: 100%;
-      margin-top: 3em; /* Reduced margin */
-      box-shadow: 0 -10px 30px rgba(194, 11, 11, 0.388); /* Top shadow only with --box-shadow color */
-      border-top: 1px solid var(--border-color); /* Subtle border */
+      margin-top: 3em;
+      box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+    
+    /* Gradient border top for footer */
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 212, 255, 0.3) 10%,
+        rgba(0, 212, 255, 0.8) 50%,
+        rgba(0, 212, 255, 0.3) 90%,
+        transparent 100%
+      );
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
     }
     
     /* Link repository */
@@ -348,160 +580,264 @@
       font-weight: 700;
     }
     .project a:hover{
-      color: var(--text-white); /* White on project link hover */
+      color: var(--accent-color);
       text-decoration: none;
     }
 
     /* General Links */
-    a{
-      color: var(--accent-dark); /* Use a darker accent for general links */
+    a {
+      color: var(--accent-color);
       text-decoration: none;
-      transition: color var(--transition-speed) ease;
-    }
-    a:hover {
-        color: var(--accent-color); /* main accent on hover */
-        text-decoration: none;
+      transition: all var(--transition-speed) ease;
     }
 
+    /* Hover: elegant glow effect */
+    a:hover:not(.contact-card) {
+      color: var(--accent-color);
+      text-shadow: 0 0 10px var(--accent-glow);
+      text-decoration: none;
+    }
 
     /* Every Section Links */
     section#about a,
-    section#projects a,
-    section#contact a {
+    section#projects a {
         color: var(--accent-color);
         font-weight: 600;
         font-size: 1.15em;
     }
 
     section#about a:hover,
-    section#projects a:hover,
-    section#contact a:hover {
-        color: var(--text-white);
+    section#projects a:hover {
+        text-shadow: 0 0 15px var(--accent-glow);
     }
 
-    /* BUTTON */
+    /* BUTTON BASE STATE - Elegant Dark Design */
     .download-btn {
       display: inline-flex;
       align-items: center;
-      padding: 16px 35px; /* Even larger button */
-      background-color: var(--accent-color);
-      color: var(--text-white);
+      padding: 16px 35px;
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+      color: var(--primary-bg);
       font-size: 19px;
       font-weight: 700;
-      border: none;
+      border: 1px solid var(--accent-color);
       border-radius: var(--border-radius-main);
       text-decoration: none;
-      transition: all var(--transition-speed) ease;
-      box-shadow: var(--box-shadow);
+      transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 
+        0 4px 16px var(--accent-glow),
+        0 0 30px var(--accent-glow);
       cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 1.5px;
+      position: relative;
+      z-index: 1;
     }
 
+    /* HOVER STATE — elegant glow */
     .download-btn:hover {
-      background-color: var(--accent-dark); /* Darker accent on hover */
-      transform: translateY(-6px) scale(1.04); /* More pronounced lift and scale */
-      box-shadow: var(--box-shadow-hover);
+      background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-color) 100%);
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 
+        0 8px 24px var(--accent-glow),
+        0 0 50px var(--accent-glow);
     }
 
     .download-btn svg {
       margin-right: 14px;
       width: 26px; /* Larger icon */
       height: 26px;
-      fill: var(--text-white);
+      fill: currentColor;
     }
 
-    /* Contact Section Styles */
+    /* ========== CONTACT SECTION STYLES - COMPLETE REWRITE ========== */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2em;
       margin-top: 2em;
+      position: relative;
+      z-index: 3; /* Above bubble effects */
     }
 
+    /* Contact Card - Base State */
     .contact-card {
+      /* Dark glass morphism */
       background: var(--card-bg);
+      backdrop-filter: blur(15px) saturate(150%);
+      -webkit-backdrop-filter: blur(15px) saturate(150%);
+      
+      /* Layout */
       padding: 2.5em 2em;
       border-radius: var(--border-radius-card);
       text-align: center;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      
+      /* Border and shadow */
       border: 1px solid var(--border-color);
-      transition: all var(--transition-speed) ease;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(0, 212, 255, 0.05);
+      
+      /* Interaction */
       cursor: pointer;
       text-decoration: none;
-      display: block;
-      color: var(--text-light);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Subtle top gradient */
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 212, 255, 0.03) 0%,
+        transparent 100%
+      );
+      pointer-events: none;
+      border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
+      z-index: 1;
     }
 
+    /* Contact Card - Hover State */
     .contact-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: var(--box-shadow-hover);
-      border-color: var(--accent-color);
+      transform: translateY(-8px);
+      border-color: var(--border-hover);
+      box-shadow: 
+        0 16px 48px rgba(0, 0, 0, 0.7),
+        0 0 0 1px var(--border-hover),
+        inset 0 1px 0 rgba(0, 212, 255, 0.1),
+        var(--glow-shadow);
     }
 
+    /* Contact Icon Circle - Base State */
     .contact-icon {
+      /* Layout */
       width: 80px;
       height: 80px;
       margin: 0 auto 1.5em;
-      background: var(--accent-color);
-      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all var(--transition-speed) ease;
+      position: relative;
+      z-index: 2;
+      
+      /* Dark glass effect */
+      background: rgba(0, 212, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 50%;
+      border: 1px solid var(--border-hover);
+      box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(0, 212, 255, 0.2),
+        0 0 20px var(--accent-glow);
+      
+      /* Transition */
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+    /* Contact Icon Circle - Hover State with rotation */
     .contact-card:hover .contact-icon {
-      background: var(--accent-dark);
-      transform: rotate(360deg);
+      background: rgba(0, 212, 255, 0.15);
+      transform: rotate(360deg) scale(1.05);
+      border-color: var(--accent-color);
+      box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(0, 212, 255, 0.3),
+        0 0 30px var(--accent-glow);
     }
 
+    /* Icon itself - Always visible */
     .contact-icon i {
       font-size: 2.5em;
-      color: var(--text-white);
+      color: var(--accent-color);
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 3;
+      filter: drop-shadow(0 0 10px var(--accent-glow));
     }
 
+    /* Contact Card Title */
     .contact-card h3 {
       font-size: 1.4em;
-      color: var(--text-light);
+      color: var(--text-primary);
       margin: 0;
-      font-family: 'Roboto Mono', monospace;
+      font-family: inherit;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Title on hover - accent glow */
+    .contact-card:hover h3 {
+      color: var(--accent-color);
+      text-shadow: 0 0 15px var(--accent-glow);
     }
 
-    /* Curriculum Section Styles */
+    /* Curriculum Section Styles - Glass Effect */
     .cv-container {
-      background: var(--card-bg);
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
       padding: 3em 2em;
       border-radius: var(--border-radius-card);
       text-align: center;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      border: 1.5px solid var(--border-color);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1);
       max-width: 600px;
       margin: 2em auto 0;
+      position: relative;
+      overflow: hidden;
+      z-index: 3; /* Above bubble effects */
+    }
+    
+    /* Glass highlight */
+    .cv-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      pointer-events: none;
+      border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
     }
 
     .cv-icon {
       width: 100px;
       height: 100px;
       margin: 0 auto 1.5em;
-      background: var(--accent-color);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all var(--transition-speed) ease;
       animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(193, 41, 46, 0.7);
-      }
-      50% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 20px rgba(193, 41, 46, 0);
-      }
+      border: 1px solid var(--border-glow);
+      box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      position: relative;
+      z-index: 1;
     }
 
     .cv-icon i {
@@ -513,7 +849,7 @@
       font-size: 1.8em;
       color: var(--accent-color);
       margin: 0 0 0.5em 0;
-      font-family: 'Roboto Mono', monospace;
+      font-family: inherit;
     }
 
     .cv-container p {
@@ -534,19 +870,26 @@
       gap: 2em;
       margin-bottom: 2.5em;
       padding-bottom: 2em;
-      border-bottom: 1px solid var(--border-color);
+      position: relative;
+      z-index: 3; /* Above bubble effects */
+      /* border-bottom: 1px solid var(--border-color); */
     }
 
     .about-icon {
       width: 100px;
       height: 100px;
       min-width: 100px;
-      background: var(--accent-color);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 30px rgba(193, 41, 46, 0.4);
+      border: 1px solid var(--border-glow);
+      box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
 
     .about-icon i {
@@ -558,7 +901,7 @@
       font-size: 2em;
       color: var(--accent-color);
       margin: 0 0 0.3em 0;
-      font-family: 'Roboto Mono', monospace;
+      font-family: inherit;
     }
 
     .about-subtitle {
@@ -588,36 +931,69 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5em;
       margin-top: 2em;
+      position: relative;
+      z-index: 3; /* Above bubble effects */
     }
 
     .highlight-card {
-      background: var(--card-bg);
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
       padding: 2em 1.5em;
       border-radius: var(--border-radius-card);
       text-align: center;
-      border: 1px solid var(--border-color);
-      transition: all var(--transition-speed) ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      border: 1.5px solid var(--border-color);
+      transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Glass highlight */
+    .highlight-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      pointer-events: none;
+      border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
     }
 
     .highlight-card:hover {
       transform: translateY(-5px);
-      box-shadow: var(--box-shadow-hover);
-      border-color: var(--accent-color);
+      border-color: var(--border-glow);
+      background: rgba(255, 255, 255, 0.18);
+      box-shadow: 
+        0 12px 48px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.15);
     }
 
     .highlight-card i {
       font-size: 2.5em;
-      color: var(--accent-color);
+      color: var(--text-white);
       margin-bottom: 0.5em;
       display: block;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     }
 
     .highlight-card h4 {
       font-size: 1.3em;
       color: var(--text-light);
       margin: 0.5em 0;
-      font-family: 'Roboto Mono', monospace;
+      font-family: inherit;
     }
 
     .highlight-card p {
@@ -654,10 +1030,12 @@
     }
 
     @media (max-width: 768px) {
-      /* --- FIX 1 & 2: Adjust body scroll lock and nav overlay behavior --- */
+      /* Prevent all scrolling when mobile nav is open */
       body.nav-active {
-        overflow: hidden; /* Only prevent scrolling */
-        /* Removed position: fixed, height: 100%, width: 100% */
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
       }
       
       header {
@@ -685,15 +1063,17 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: var(--primary-bg);
+        background: rgba(30, 20, 60, 0.98); /* Darker background */
+        backdrop-filter: blur(40px) saturate(180%); /* Stronger frosted glass effect */
+        -webkit-backdrop-filter: blur(40px) saturate(180%); /* Safari support */
         display: flex;
         align-items: center;
         justify-content: center;
         transform: translateX(100%);
         transition: transform 0.4s ease-in-out;
         z-index: 1001;
-        overflow-y: auto; /* Allow scrolling within the nav if content is too tall */
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS */
+        overflow: hidden; /* Prevent scrolling within nav */
+        -webkit-overflow-scrolling: auto;
       }
       nav.active {
         transform: translateX(0);
@@ -710,18 +1090,19 @@
       .nav-list a {
           font-size: 1.8em; /* Even larger links for better touch target */
           padding: 18px 30px;
-          color: var(--text-white); /* White for mobile nav links */
+          color: var(--text-light); /* Use theme text color for mobile nav links */
           display: block;
           width: 100%;
       }
       .nav-list a:hover {
-        color: var(--text-white);
+        color: var(--accent-color); /* Accent color on hover */
       }
       .nav-list a::after {
           height: 3px;
+          background: var(--accent-color); /* Accent color for underline */
       }
       .nav-list a.active::after {
-          background: var(--text-white); /* White underline for active mobile link */
+          background: var(--accent-color); /* Accent color underline for active mobile link */
       }
 
 
@@ -837,6 +1218,24 @@
         font-size: 1.2em;
       }
     }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 
+          0 4px 16px rgba(0, 0, 0, 0.1),
+          0 0 0 0 rgba(255, 255, 255, 0.7),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 
+          0 8px 24px rgba(0, 0, 0, 0.15),
+          0 0 0 20px rgba(255, 255, 255, 0),
+          inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -844,8 +1243,7 @@
   <header>
     <h1>Leonardo Rufini</h1>
     <button class="nav-toggle" aria-label="Toggle navigation">
-      <!-- Replaced Font Awesome icon with custom spans for a cleaner animation -->
-      <span></span>
+      <i class="fas fa-bars"></i>
     </button>
     <nav>
       <ul class="nav-list">
@@ -931,7 +1329,7 @@
         <h3>GitHub</h3>
       </a>
 
-      <a href="https://www.linkedin.com/in/leonardo-rufini-217700335" target="_blank" rel="noopener noreferrer" class="contact-card">
+      <a href="https://www.linkedin.com/in/leonardo-rufini-217700335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" class="contact-card">
         <div class="contact-icon">
           <i class="fab fa-linkedin"></i>
         </div>
