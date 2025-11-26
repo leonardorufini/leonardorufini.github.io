@@ -833,6 +833,99 @@
       line-height: 1.6;
     }
 
+    /* Certifications Section Styles */
+    .certifications-container {
+      margin-top: 3em;
+      padding-top: 2em;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .certifications-container h3 {
+      font-size: 1.8em;
+      color: var(--accent-color);
+      margin: 0 0 1.5em 0;
+      text-align: center;
+      font-family: inherit;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2em;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .cert-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      padding: 2em 1.5em;
+      border-radius: var(--border-radius-card);
+      text-align: center;
+      border: 1.5px solid var(--border-color);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition-speed) ease;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-glow);
+      box-shadow: 
+        0 12px 48px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    .cert-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 1em;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-speed) ease;
+      border: 1px solid var(--border-glow);
+      box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    .cert-icon i {
+      font-size: 2em;
+      color: var(--text-white);
+    }
+
+    .cert-card h4 {
+      font-size: 1.3em;
+      color: var(--accent-color);
+      margin: 0 0 0.5em 0;
+      font-family: inherit;
+    }
+
+    .cert-card p {
+      font-size: 1em;
+      color: var(--text-muted);
+      margin-bottom: 1.5em;
+      line-height: 1.4;
+    }
+
+    .cert-card .download-btn {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+
     /* About Section Styles */
     .about-container {
       margin-top: 2em;
@@ -1159,6 +1252,33 @@
       .cv-container p {
         font-size: 1em;
       }
+      
+      .cert-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5em;
+        padding: 0 0.5em;
+      }
+      
+      .cert-card {
+        padding: 1.5em 1em;
+      }
+      
+      .cert-icon {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .cert-icon i {
+        font-size: 1.8em;
+      }
+      
+      .cert-card h4 {
+        font-size: 1.2em;
+      }
+      
+      .cert-card p {
+        font-size: 0.95em;
+      }
       .about-intro {
         flex-direction: column;
         text-align: center;
@@ -1224,7 +1344,7 @@
         <li><a href="#about">Who am I</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contacts</a></li>
-        <li><a href="#curriculum">Curriculum</a></li>
+        <li><a href="#curriculum">Curriculum & Certifications</a></li>
       </ul>
     </nav>
   </header>
@@ -1268,8 +1388,9 @@
         </div>
         <div class="highlight-card">
           <i class="fas fa-trophy"></i>
-          <h4>Achievement</h4>
+          <h4>Achievements</h4>
           <p>Cyberchallenge 2024<br><span>Sapienza Team Member</span></p>
+          <p>IXH-25 Hackathon Winner<br><span>UniTn3 Team</span></p>
         </div>
       </div>
     </div>
@@ -1313,7 +1434,7 @@
     </section>
 
     <section id="curriculum" class="animated-section">
-    <h2>Curriculum</h2>
+    <h2>Curriculum & Certifications</h2>
     <div class="cv-container">
       <div class="cv-icon">
         <i class="fas fa-file-pdf"></i>
@@ -1327,11 +1448,52 @@
         Download CV
       </button>
     </div>
+    
+    <div class="certifications-container">
+      <h3>Certifications & Attestations</h3>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <h4>IXH-25 Hackathon Winner</h4>
+          <p>Winner certificate - UniTn3 Team</p>
+          <button type="button" class="download-btn" onclick="downloadFile('file/IXH25-winners-UniTn3-Rufini.docx.pdf', 'IXH25-Winner-Certificate.pdf')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M5 20h14v-2H5v2zm7-18l-5.5 5.5h4v6h3v-6h4L12 2z"/>
+            </svg>
+            Download
+          </button>
+        </div>
+        
+        <div class="cert-card">
+          <div class="cert-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h4>Cyberchallenge 2024</h4>
+          <p>Local competition attestation</p>
+          <button type="button" class="download-btn" onclick="downloadFile('file/CCIT2024 - Attestato gara locale - RUFINI Leonardo.pdf', 'Cyberchallenge2024-Attestation.pdf')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M5 20h14v-2H5v2zm7-18l-5.5 5.5h4v6h3v-6h4L12 2z"/>
+            </svg>
+            Download
+          </button>
+        </div>
+      </div>
+    </div>
+    
     <script>
       function downloadCV() {
         const link = document.createElement('a');
-        link.href = "https://raw.githubusercontent.com/leonardorufini/leonardorufini.github.io/main/CV.pdf";
-        link.download = "CV.pdf";
+        link.href = "file/CV.pdf";
+        link.download = "Leonardo_Rufini_CV.pdf";
+        link.click();
+      }
+      
+      function downloadFile(filepath, filename) {
+        const link = document.createElement('a');
+        link.href = filepath;
+        link.download = filename;
         link.click();
       }
     </script> 
