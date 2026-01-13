@@ -1,0 +1,1316 @@
+/* Apple Liquid Glass Theme CSS Variables */
+:root {
+ /* Background gradient - soft blue to purple like iOS */
+ --primary-bg: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+ --secondary-bg: rgba(255, 255, 255, 0.1);
+ --section-bg: rgba(255, 255, 255, 0.08);
+ --card-bg: rgba(255, 255, 255, 0.12);
+ --accent-color: rgba(255, 255, 255, 0.95);
+ --accent-dark: rgba(255, 255, 255, 0.8);
+ --text-light: rgba(255, 255, 255, 0.95);
+ --text-muted: rgba(255, 255, 255, 0.7);
+ --text-white: rgba(255, 255, 255, 1);
+ --border-color: rgba(255, 255, 255, 0.18);
+ --border-glow: rgba(255, 255, 255, 0.4);
+ --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+ --box-shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.15);
+ --glass-highlight: linear-gradient(
+   135deg,
+   rgba(255, 255, 255, 0.3) 0%,
+   rgba(255, 255, 255, 0) 50%,
+   rgba(255, 255, 255, 0.1) 100%
+ );
+ --clickable-hover: linear-gradient(
+    270deg,
+    #ff0040,
+    #ff8000,
+    #ffff00,
+    #00ff00,
+    #00ffff,
+    #0080ff,
+    #8000ff,
+    #ff00ff
+  );
+ --border-radius-main: 24px;
+ --border-radius-card: 20px;
+ --transition-speed: 0.3s;
+ --animation-duration: 0.7s;
+ --stagger-delay: 0.08s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+ font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  margin: 0;
+  line-height: 1.8;
+  background: var(--primary-bg);
+  background-attachment: fixed;
+  color: var(--text-light);
+  position: relative;
+}
+
+/* Add animated background particles/gradient */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4a5dc7, #5a3a8f, #c94fa0, #4a5dc7);
+  background-size: 400% 400%;
+  z-index: -1;
+  animation: gradientShift 30s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Header e Navbar */
+header {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  color: var(--text-light);
+  padding: 1.5em 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Header scroll effect */
+header.scrolled {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  padding: 0.8em 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid var(--border-glow);
+}
+
+header h1 {
+  font-family: inherit;
+  font-size: 3.4em; /* Even larger, more impactful title */
+  margin: 0.2em 0 0.5em 0;
+  letter-spacing: 2px;
+  color: var(--text-light);
+  transition: font-size 0.3s ease, margin 0.3s ease;
+}
+
+header.scrolled h1 {
+    font-size: 2.6em;
+}
+
+nav {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 45px; /* More space */
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.nav-list li {
+  margin: 0;
+}
+
+.nav-list a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 1.15em;
+  transition: all var(--transition-speed) ease;
+  padding: 8px 15px;
+  border-radius: var(--border-radius-card);
+  position: relative;
+}
+
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width var(--transition-speed) ease;
+    box-shadow: 0 0 0px transparent;
+}
+
+.nav-list a:hover::after,
+.nav-list a.active::after {
+    width: 100%;
+    background: var(--clickable-hover);
+    background-size: 1600% 1600%;
+    animation: rainbowShift 2s linear infinite;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.nav-list a:hover{
+  color: var(--text-light);
+  transform: translateY(-3px);
+  font-weight: 700;
+  /* background-color: var(--accent-deep); Deeper accent background on hover */
+  text-decoration: none;
+}
+
+/* Modern Glass Toggle Button */
+.nav-toggle {
+    display: none;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.nav-toggle:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+    box-shadow: 
+      0 6px 20px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Icon inside the button */
+.nav-toggle i {
+  font-size: 1.4em;
+  color: rgba(255, 255, 255, 0.95);
+  transition: all 0.3s ease;
+}
+
+/* When nav is active, change icon */
+.nav-toggle.active {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.nav-toggle.active i:before {
+  content: "\f00d"; /* Font Awesome X icon code */
+}
+
+/* Sezioni - Glass Morphism Effect with Soap Bubble */
+section {
+  padding: 4.5em;
+  max-width: 1000px;
+  margin: 2.5em auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  
+  /* Base glass effect - will be overlaid with gradient */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  
+  border-radius: var(--border-radius-main);
+  color: var(--text-light);
+  position: relative;
+  overflow: hidden;
+  
+  /* Shiny border */
+  border: 1.5px solid var(--border-color);
+  
+  /* Glass highlight overlay */
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Soap bubble gradient - opaque edges, transparent center - 10/10 INTENSITY */
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--border-radius-main);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.02) 20%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.20) 80%,
+    rgba(255, 255, 255, 0.35) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Shiny light reflection on the glass - like soap bubble iridescence */
+section::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.2) 20%,
+    transparent 40%,
+    transparent 60%,
+    rgba(255, 200, 255, 0.15) 80%,
+    rgba(200, 220, 255, 0.15) 100%
+  );
+  border-radius: var(--border-radius-main);
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 2;
+  animation: bubbleShine 8s ease-in-out infinite;
+}
+
+/* Subtle shine animation */
+@keyframes bubbleShine {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: rotate(5deg) scale(1.05);
+    opacity: 0.7;
+  }
+}
+
+/* Hover effect for sections */
+section:hover {
+  border-color: var(--border-glow);
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+section:hover::after {
+  opacity: 0.8;
+}
+
+section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section h2 {
+  font-family: inherit;
+  font-size: 2.8em; /* Larger section titles */
+  color: var(--accent-color);
+  margin-top: 0; /* Ensures consistent top spacing within section */
+  margin-bottom: 0.8em;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.6em; /* Slightly more padding */
+  position: relative;
+  z-index: 3; /* Above bubble effects */
+  /* text-shadow: 0 0 10px rgba(255, 0, 8, 0.5); */
+}
+
+section p {
+    font-size: 1.15em;
+    margin-bottom: 1.2em;
+    line-height: 1.9;
+    position: relative;
+    z-index: 3; /* Above bubble effects */
+}
+
+#project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive min-width */
+  gap: 2.2em; /* More space between projects */
+  margin-top: 2.5em;
+  position: relative;
+  z-index: 3; /* Above bubble effects */
+}
+
+.project {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  padding: 2.2em;
+  border-radius: var(--border-radius-card);
+  color: var(--text-light);
+  
+  /* Glass effect with shine */
+  border: 1.5px solid var(--border-color);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  
+  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(25px);
+}
+
+/* Glass highlight for projects */
+.project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
+}
+
+.project.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--border-glow);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.project h3 {
+    font-family: inherit;
+    font-size: 1.6em; /* Larger project title */
+    margin-top: 0;
+    margin-bottom: 0.6em;
+    color: var(--accent-color);
+    transition: color var(--transition-speed) ease;
+    word-wrap: break-word; /* Allows long words to break */
+    overflow-wrap: break-word; /* Alternative for word-wrap */
+    white-space: normal; /* Ensures text wraps normally */
+    line-height: 1.3; /* Improves readability of wrapped titles */
+}
+
+.project h3:hover {
+    color: var(--accent-color); /* White on project title hover */
+}
+
+.project hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Slightly more visible separator */
+    margin: 1.2em 0;
+}
+
+.project p {
+    font-size: 1.05em; /* Slightly larger project description */
+    margin-bottom: 1.5em;
+    flex-grow: 1;
+    color: var(--text-muted); /* Muted text for description */
+}
+
+.project ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.8em; /* More space */
+  font-size: 0.98em;
+  color: var(--text-light);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px; /* More space between items */
+}
+
+.project ul li {
+    background-color: rgba(255, 255, 255, 0.18); /* Brighter background for labels */
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: inherit;
+    color: var(--text-muted);
+}
+
+.project ul li strong {
+    color: var(--accent-color);
+}
+
+/* Footer - Glass Effect */
+footer {
+  text-align: center;
+  padding: 2.5em;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  color: var(--text-muted);
+  width: 100%;
+  margin-top: 3em;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Link repository */
+.project a {
+  text-decoration: none;
+  color: var(--accent-color);
+  transition: color var(--transition-speed) ease;
+  font-weight: 700;
+}
+.project a:hover{
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+/* General Links */
+a {
+  color: var(--accent-dark);
+  text-decoration: none;
+  transition: all var(--transition-speed) ease;
+}
+
+/* Hover: rainbow gradient inside the text itself - EXCEPT contact cards */
+a:hover:not(.contact-card) {
+  background: linear-gradient(
+    270deg,
+    #ff0040,
+    #ff8000,
+    #ffff00,
+    #00ff00,
+    #00ffff,
+    #0080ff,
+    #8000ff,
+    #ff00ff
+  );
+  background-size: 1600% 1600%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowShift 5s linear infinite;
+  text-decoration: none;
+}
+
+/* Rainbow animation keyframes - CONSOLIDATED */
+@keyframes rainbowShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Every Section Links - except contact (handled separately) */
+section#about a,
+section#projects a {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 1.15em;
+}
+
+section#about a:hover,
+section#projects a:hover {
+    color: var(--text-white);
+}
+
+/* BUTTON BASE STATE - Glass Effect */
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 35px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text-white);
+  font-size: 19px;
+  font-weight: 700;
+  border: 1.5px solid var(--border-glow);
+  border-radius: var(--border-radius-main);
+  text-decoration: none;
+  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+  z-index: 1;
+}
+
+/* HOVER STATE — rainbow animation */
+.download-btn:hover {
+  background: var(--clickable-hover);
+  background-size: 1600% 1600%;
+  animation: rainbowShift 5s linear infinite;
+  transform: translateY(-6px) scale(1.04);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.download-btn svg {
+  margin-right: 14px;
+  width: 26px; /* Larger icon */
+  height: 26px;
+  fill: var(--text-white);
+}
+
+/* ========== CONTACT SECTION STYLES - COMPLETE REWRITE ========== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2em;
+  margin-top: 2em;
+  position: relative;
+  z-index: 3; /* Above bubble effects */
+}
+
+/* Contact Card - Base State */
+.contact-card {
+  /* Glass morphism background */
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  
+  /* Layout */
+  padding: 2.5em 2em;
+  border-radius: var(--border-radius-card);
+  text-align: center;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  
+  /* Border and shadow */
+  border: 1.5px solid var(--border-color);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  
+  /* Interaction */
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glass highlight overlay */
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
+  z-index: 1;
+}
+
+/* Contact Card - Hover State - SIMPLIFIED */
+.contact-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-glow);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Contact Icon Circle - Base State */
+.contact-icon {
+  /* Layout */
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  
+  /* Glass effect */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 50%;
+  border: 1px solid var(--border-glow);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  
+  /* Transition */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Contact Icon Circle - Hover State with rotation */
+.contact-card:hover .contact-icon {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(360deg) scale(1.05);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Icon itself - Always visible */
+.contact-icon i {
+  font-size: 2.5em;
+  color: rgba(255, 255, 255, 0.95);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 3;
+}
+
+/* Contact Card Title - Rainbow effect like other links */
+.contact-card h3 {
+  font-size: 1.4em;
+  color: var(--accent-color);
+  margin: 0;
+  font-family: inherit;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Title on hover - rainbow gradient effect */
+.contact-card:hover h3 {
+  background: var(--clickable-hover);
+  background-size: 1600% 1600%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowShift 5s linear infinite;
+}
+
+/* Curriculum Section Styles - Glass Effect */
+.cv-container {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  padding: 3em 2em;
+  border-radius: var(--border-radius-card);
+  text-align: center;
+  border: 1.5px solid var(--border-color);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  max-width: 600px;
+  margin: 2em auto 0;
+  position: relative;
+  overflow: hidden;
+  z-index: 3; /* Above bubble effects */
+}
+
+/* Glass highlight */
+.cv-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
+}
+
+.cv-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1.5em;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed) ease;
+  animation: pulse 2s ease-in-out infinite;
+  border: 1px solid var(--border-glow);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.cv-icon i {
+  font-size: 3em;
+  color: var(--text-white);
+}
+
+.cv-container h3 {
+  font-size: 1.8em;
+  color: var(--accent-color);
+  margin: 0 0 0.5em 0;
+  font-family: inherit;
+}
+
+.cv-container p {
+  font-size: 1.1em;
+  color: var(--text-muted);
+  margin-bottom: 2em;
+  line-height: 1.6;
+}
+
+/* Certifications Section Styles */
+.certifications-container {
+  margin-top: 3em;
+  padding-top: 2em;
+  border-top: 1px solid var(--border-color);
+}
+
+.certifications-container h3 {
+  font-size: 1.8em;
+  color: var(--accent-color);
+  margin: 0 0 1.5em 0;
+  text-align: center;
+  font-family: inherit;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2em;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cert-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  padding: 2em 1.5em;
+  border-radius: var(--border-radius-card);
+  text-align: center;
+  border: 1.5px solid var(--border-color);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-speed) ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-glow);
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.cert-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1em;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed) ease;
+  border: 1px solid var(--border-glow);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.cert-icon i {
+  font-size: 2em;
+  color: var(--text-white);
+}
+
+.cert-card h4 {
+  font-size: 1.3em;
+  color: var(--accent-color);
+  margin: 0 0 0.5em 0;
+  font-family: inherit;
+}
+
+.cert-card p {
+  font-size: 1em;
+  color: var(--text-muted);
+  margin-bottom: 1.5em;
+  line-height: 1.4;
+}
+
+.cert-card .download-btn {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+/* About Section Styles */
+.about-container {
+  margin-top: 2em;
+}
+
+.about-intro {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  margin-bottom: 2.5em;
+  padding-bottom: 2em;
+  position: relative;
+  z-index: 3; /* Above bubble effects */
+  /* border-bottom: 1px solid var(--border-color); */
+}
+
+.about-icon {
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-glow);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.about-icon i {
+  font-size: 3em;
+  color: var(--text-white);
+}
+
+.about-text h3 {
+  font-size: 2em;
+  color: var(--accent-color);
+  margin: 0 0 0.3em 0;
+  font-family: inherit;
+}
+
+.about-subtitle {
+  font-size: 1.1em;
+  color: var(--text-muted);
+  margin: 0;
+  font-style: italic;
+}
+
+.about-content {
+  margin-bottom: 3em;
+}
+
+.about-content p {
+  font-size: 1.15em;
+  line-height: 1.9;
+  margin-bottom: 1.5em;
+}
+
+.about-content strong {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.about-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5em;
+  margin-top: 2em;
+  position: relative;
+  z-index: 3; /* Above bubble effects */
+}
+
+.highlight-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  padding: 2em 1.5em;
+  border-radius: var(--border-radius-card);
+  text-align: center;
+  border: 1.5px solid var(--border-color);
+  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glass highlight */
+.highlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
+}
+
+.highlight-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-glow);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.highlight-card i {
+  font-size: 2.5em;
+  color: var(--text-white);
+  margin-bottom: 0.5em;
+  display: block;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.highlight-card h4 {
+  font-size: 1.3em;
+  color: var(--text-light);
+  margin: 0.5em 0;
+  font-family: inherit;
+}
+
+.highlight-card p {
+  font-size: 1em;
+  color: var(--text-muted);
+  margin: 0.5em 0 0 0;
+  line-height: 1.6;
+}
+
+.highlight-card span {
+  font-size: 0.9em;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    section {
+        padding: 3.5em 2.5em;
+        margin: 2.5em auto; /* Reduced margin */
+    }
+    header h1 {
+        font-size: 2.8em;
+    }
+    section h2 {
+        font-size: 2.4em;
+    }
+    .project {
+        padding: 1.8em;
+    }
+    #project-list {
+        gap: 1.8em;
+    }
+}
+
+@media (max-width: 768px) {
+  /* Prevent all scrolling when mobile nav is open */
+  body.nav-active {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+  
+  header {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 1em 1.5em;
+      align-items: center;
+  }
+  header h1 {
+    font-size: 2.2em;
+    margin: 0;
+  }
+  header.scrolled h1 {
+    font-size: 2em;
+  }
+
+  .nav-toggle {
+    display: flex !important; /* Show only on smartphone */
+    z-index: 1003; /* Ensure button stays above nav */
+  }
+
+  nav {
+    position: fixed; /* Keep nav fixed to cover viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(30, 20, 60, 0.98); /* Darker background */
+    backdrop-filter: blur(40px) saturate(180%); /* Stronger frosted glass effect */
+    -webkit-backdrop-filter: blur(40px) saturate(180%); /* Safari support */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1001;
+    overflow: hidden; /* Prevent scrolling within nav */
+    -webkit-overflow-scrolling: auto;
+  }
+  nav.active {
+    transform: translateX(0);
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 25px;
+    font-size: 1em;
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+  }
+  .nav-list a {
+      font-size: 1.8em; /* Even larger links for better touch target */
+      padding: 18px 30px;
+      color: var(--text-light); /* Use theme text color for mobile nav links */
+      display: block;
+      width: 100%;
+  }
+  .nav-list a:hover {
+    color: var(--accent-color); /* Accent color on hover */
+  }
+  .nav-list a::after {
+      height: 3px;
+      background: var(--accent-color); /* Accent color for underline */
+  }
+  .nav-list a.active::after {
+      background: var(--accent-color); /* Accent color underline for active mobile link */
+  }
+
+
+  section {
+    padding: 2em 1.2em;
+    margin: 1.5em 1em; /* More horizontal margin to show background */
+  }
+  section h2 {
+    font-size: 2em;
+    padding-bottom: 0.5em;
+  }
+  section p {
+    font-size: 1em;
+  }
+  #project-list {
+    grid-template-columns: 1fr;
+    gap: 1.2em;
+    margin: 1.5em 0; /* Better centering */
+    padding: 0 0.5em; /* Add horizontal padding */
+  }
+  .project {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 1.2em;
+    margin-left: auto;   
+    margin-right: auto;  
+    max-width: 90%;      
+    min-width: 280px;    
+  }
+  .project h3 {
+    font-size: 1.2em; /* Smaller to prevent overflow */
+    line-height: 1.3; /* Better line spacing */
+    word-wrap: break-word; /* Prevent overflow */
+    overflow-wrap: break-word; /* Additional overflow protection */
+  }
+  .project p {
+    font-size: 0.9em;
+    line-height: 1.4; /* Better readability */
+  }
+  .project ul li {
+    font-size: 0.9em;
+    padding: 4px 8px;
+  }
+  .download-btn {
+      padding: 14px 25px;
+      font-size: 17px;
+  }
+  .download-btn svg {
+      width: 22px;
+      height: 22px;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5em;
+  }
+  .contact-card {
+    padding: 2em 1.5em;
+  }
+  .contact-icon {
+    width: 70px;
+    height: 70px;
+  }
+  .contact-icon i {
+    font-size: 2em;
+  }
+  .cv-container {
+    padding: 2em 1.5em;
+    margin: 1.5em auto 0;
+  }
+  .cv-icon {
+    width: 80px;
+    height: 80px;
+  }
+  .cv-icon i {
+    font-size: 2.5em;
+  }
+  .cv-container h3 {
+    font-size: 1.5em;
+  }
+  .cv-container p {
+    font-size: 1em;
+  }
+  
+  .cert-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5em;
+    padding: 0 0.5em;
+  }
+  
+  .cert-card {
+    padding: 1.5em 1em;
+  }
+  
+  .cert-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .cert-icon i {
+    font-size: 1.8em;
+  }
+  
+  .cert-card h4 {
+    font-size: 1.2em;
+  }
+  
+  .cert-card p {
+    font-size: 0.95em;
+  }
+  .about-intro {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5em;
+  }z
+  .about-icon {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+  }
+  .about-icon i {
+    font-size: 2.5em;
+  }
+  .about-text h3 {
+    font-size: 1.6em;
+  }
+  .about-subtitle {
+    font-size: 1em;
+  }
+  .about-highlights {
+    grid-template-columns: 1fr;
+    gap: 1.2em;
+  }
+  .highlight-card {
+    padding: 1.5em 1em;
+  }
+  .highlight-card i {
+    font-size: 2em;
+  }
+  .highlight-card h4 {
+    font-size: 1.2em;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.1),
+      0 0 0 0 rgba(255, 255, 255, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.15),
+      0 0 0 20px rgba(255, 255, 255, 0),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+}
