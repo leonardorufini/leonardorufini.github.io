@@ -2,6 +2,8 @@
 
 A modern, responsive personal portfolio website built with vanilla HTML, CSS, and JavaScript. Features a deep dark theme with red accent colors, smooth animations, and dynamic GitHub project loading.
 
+> **✨ Recently Refactored**: The website has been reorganized into a clean, maintainable structure with separate CSS and JavaScript files for better code organization and easier updates.
+
 ## 🚀 Live Demo
 
 Visit the website at: [leonardorufini.github.io](https://leonardorufini.github.io)
