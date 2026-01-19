@@ -181,9 +181,9 @@ nav {
 
 .nav-list a:hover{
   color: var(--text-light);
-  transform: translateY(-3px);
+  /* transform: translateY(-3px) scale(1.05); */
   font-weight: 700;
-  /* background-color: var(--accent-deep); Deeper accent background on hover */
+  /* background-color: var(--accent-deep); */
   text-decoration: none;
 }
 
@@ -517,8 +517,8 @@ a {
   transition: all var(--transition-speed) ease;
 }
 
-/* Hover: rainbow gradient inside the text itself - EXCEPT contact cards */
-a:hover:not(.contact-card) {
+/* Hover: rainbow gradient inside the text itself - EXCEPT contact cards and nav links */
+a:hover:not(.contact-card):not(.nav-list a) {
   background: linear-gradient(
     270deg,
     #ff0040,
