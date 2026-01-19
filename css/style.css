@@ -1,10 +1,10 @@
 /* Apple Liquid Glass Theme CSS Variables */
 :root {
- /* Background gradient - soft blue to purple like iOS */
- --primary-bg: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
- --secondary-bg: rgba(255, 255, 255, 0.1);
- --section-bg: rgba(255, 255, 255, 0.08);
- --card-bg: rgba(255, 255, 255, 0.12);
+ /* Background gradient - darker blue to purple */
+ --primary-bg: linear-gradient(135deg, #2f2a7c 0%, #3d1f5c 50%, #5a2d6f 100%);
+ --secondary-bg: rgba(255, 255, 255, 0.15);
+ --section-bg: rgba(255, 255, 255, 0.12);
+ --card-bg: rgba(255, 255, 255, 0.18);
  --accent-color: rgba(255, 255, 255, 0.95);
  --accent-dark: rgba(255, 255, 255, 0.8);
  --text-light: rgba(255, 255, 255, 0.95);
@@ -52,10 +52,21 @@ body {
  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   margin: 0;
   line-height: 1.8;
-  background: var(--primary-bg);
+  background: #000; /* Solid black for Matrix effect */
   background-attachment: fixed;
   color: var(--text-light);
   position: relative;
+}
+
+/* Matrix Canvas Background */
+#matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  opacity: 0.8;
 }
 
 /* Add animated background particles/gradient */
@@ -66,36 +77,25 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #4a5dc7, #5a3a8f, #c94fa0, #4a5dc7);
+  background: linear-gradient(135deg, rgba(3, 1, 1, 0.7), rgba(106, 0, 255, 0.3), rgba(251, 0, 247, 0.3), rgba(255, 0, 0, 0.3));
   background-size: 400% 400%;
   z-index: -1;
-  animation: gradientShift 30s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  pointer-events: none;
+  /* Removed animation for better performance */
 }
 
 /* Header e Navbar */
 header {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(30px) saturate(180%);
-  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   color: var(--text-light);
   padding: 1.5em 0;
   text-align: center;
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: padding 0.3s ease, backdrop-filter 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,9 +105,9 @@ header {
 
 /* Header scroll effect */
 header.scrolled {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(40px) saturate(200%);
-  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   padding: 0.8em 0;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   border-bottom: 1px solid var(--border-glow);
@@ -151,7 +151,7 @@ nav {
   font-weight: 600;
   font-family: inherit;
   font-size: 1.15em;
-  transition: all var(--transition-speed) ease;
+  transition: transform 0.2s ease;
   padding: 8px 15px;
   border-radius: var(--border-radius-card);
   position: relative;
@@ -235,7 +235,7 @@ nav {
   content: "\f00d"; /* Font Awesome X icon code */
 }
 
-/* Sezioni - Glass Morphism Effect with Soap Bubble */
+/* Sezioni - Glass Morphism Effect (Simplified) */
 section {
   padding: 4.5em;
   max-width: 1000px;
@@ -243,31 +243,28 @@ section {
   margin-top: 5%;
   margin-bottom: 5%;
   
-  /* Base glass effect - will be overlaid with gradient */
+  /* Simplified glass effect */
   background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(30px) saturate(180%);
-  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   
   border-radius: var(--border-radius-main);
   color: var(--text-light);
   position: relative;
   overflow: hidden;
   
-  /* Shiny border */
   border: 1.5px solid var(--border-color);
   
-  /* Glass highlight overlay */
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 
   opacity: 0;
   transform: translateY(40px);
-  transition: all var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-/* Soap bubble gradient - opaque edges, transparent center - 10/10 INTENSITY */
+/* Simplified bubble effect - removed complex gradients */
 section::before {
   content: '';
   position: absolute;
@@ -279,63 +276,19 @@ section::before {
   background: radial-gradient(
     ellipse at center,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.02) 20%,
-    rgba(255, 255, 255, 0.08) 50%,
-    rgba(255, 255, 255, 0.20) 80%,
-    rgba(255, 255, 255, 0.35) 100%
+    rgba(255, 255, 255, 0.12) 100%
   );
   pointer-events: none;
   z-index: 1;
 }
 
-/* Shiny light reflection on the glass - like soap bubble iridescence */
-section::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0.2) 20%,
-    transparent 40%,
-    transparent 60%,
-    rgba(255, 200, 255, 0.15) 80%,
-    rgba(200, 220, 255, 0.15) 100%
-  );
-  border-radius: var(--border-radius-main);
-  pointer-events: none;
-  opacity: 0.6;
-  z-index: 2;
-  animation: bubbleShine 8s ease-in-out infinite;
-}
+/* Removed the ::after pseudo-element animation for performance */
 
-/* Subtle shine animation */
-@keyframes bubbleShine {
-  0%, 100% {
-    transform: rotate(0deg) scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: rotate(5deg) scale(1.05);
-    opacity: 0.7;
-  }
-}
-
-/* Hover effect for sections */
 section:hover {
   border-color: var(--border-glow);
   box-shadow: 
     0 12px 48px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.2);
-  transform: translateY(-5px);
-}
-
-section:hover::after {
-  opacity: 0.8;
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 section.is-visible {
@@ -374,21 +327,19 @@ section p {
 }
 
 .project {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   padding: 2.2em;
   border-radius: var(--border-radius-card);
   color: var(--text-light);
   
-  /* Glass effect with shine */
   border: 1.5px solid var(--border-color);
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   
-  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -399,7 +350,7 @@ section p {
   transform: translateY(25px);
 }
 
-/* Glass highlight for projects */
+/* Simplified glass highlight */
 .project::before {
   content: '';
   position: absolute;
@@ -409,7 +360,7 @@ section p {
   height: 50%;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.15) 0%,
     rgba(255, 255, 255, 0) 100%
   );
   pointer-events: none;
@@ -422,13 +373,12 @@ section p {
 }
 
 .project:hover {
-  transform: translateY(-10px) scale(1.02);
+  transform: translateY(-5px) scale(1.01);
   border-color: var(--border-glow);
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 
     0 12px 48px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .project h3 {
@@ -488,9 +438,9 @@ section p {
 footer {
   text-align: center;
   padding: 2.5em;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(30px) saturate(180%);
-  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   color: var(--text-muted);
   width: 100%;
   margin-top: 3em;
@@ -514,7 +464,7 @@ footer {
 a {
   color: var(--accent-dark);
   text-decoration: none;
-  transition: all var(--transition-speed) ease;
+  transition: opacity 0.2s ease;
 }
 
 /* Hover: rainbow gradient inside the text itself - EXCEPT contact cards and nav links */
@@ -570,15 +520,15 @@ section#projects a:hover {
   align-items: center;
   padding: 16px 35px;
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: var(--text-white);
   font-size: 19px;
   font-weight: 700;
   border: 1.5px solid var(--border-glow);
   border-radius: var(--border-radius-main);
   text-decoration: none;
-  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.2s ease;
   box-shadow: 
     0 4px 16px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -589,12 +539,12 @@ section#projects a:hover {
   z-index: 1;
 }
 
-/* HOVER STATE — rainbow animation */
+/* HOVER STATE — simplified */
 .download-btn:hover {
   background: var(--clickable-hover);
   background-size: 1600% 1600%;
   animation: rainbowShift 5s linear infinite;
-  transform: translateY(-6px) scale(1.04);
+  transform: translateY(-3px) scale(1.02);
   border-color: rgba(255, 255, 255, 0.5);
   box-shadow: 
     0 8px 24px rgba(0, 0, 0, 0.15),
@@ -620,10 +570,10 @@ section#projects a:hover {
 
 /* Contact Card - Base State */
 .contact-card {
-  /* Glass morphism background */
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  /* Glass morphism background - simplified */
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   
   /* Layout */
   padding: 2.5em 2em;
@@ -637,13 +587,12 @@ section#projects a:hover {
   border: 1.5px solid var(--border-color);
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   
   /* Interaction */
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 }
 
 /* Glass highlight overlay */
@@ -666,13 +615,12 @@ section#projects a:hover {
 
 /* Contact Card - Hover State - SIMPLIFIED */
 .contact-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
   border-color: var(--border-glow);
   background: rgba(255, 255, 255, 0.18);
   box-shadow: 
     0 12px 48px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* Contact Icon Circle - Base State */
@@ -743,22 +691,21 @@ section#projects a:hover {
 
 /* Curriculum Section Styles - Glass Effect */
 .cv-container {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   padding: 3em 2em;
   border-radius: var(--border-radius-card);
   text-align: center;
   border: 1.5px solid var(--border-color);
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   max-width: 600px;
   margin: 2em auto 0;
   position: relative;
   overflow: hidden;
-  z-index: 3; /* Above bubble effects */
+  z-index: 3;
 }
 
 /* Glass highlight */
@@ -783,13 +730,13 @@ section#projects a:hover {
   height: 100px;
   margin: 0 auto 1.5em;
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all var(--transition-speed) ease;
+  transition: transform 0.3s ease;
   animation: pulse 2s ease-in-out infinite;
   border: 1px solid var(--border-glow);
   box-shadow: 
@@ -842,24 +789,23 @@ section#projects a:hover {
 }
 
 .cert-card {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   padding: 2em 1.5em;
   border-radius: var(--border-radius-card);
   text-align: center;
   border: 1.5px solid var(--border-color);
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
-  transition: all var(--transition-speed) ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .cert-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
   border-color: var(--border-glow);
   box-shadow: 
     0 12px 48px rgba(0, 0, 0, 0.15),
@@ -871,13 +817,13 @@ section#projects a:hover {
   height: 70px;
   margin: 0 auto 1em;
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all var(--transition-speed) ease;
+  transition: transform 0.3s ease;
   border: 1px solid var(--border-glow);
   box-shadow: 
     0 4px 16px rgba(0, 0, 0, 0.1),
@@ -932,8 +878,8 @@ section#projects a:hover {
   height: 100px;
   min-width: 100px;
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -988,18 +934,17 @@ section#projects a:hover {
 }
 
 .highlight-card {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   padding: 2em 1.5em;
   border-radius: var(--border-radius-card);
   text-align: center;
   border: 1.5px solid var(--border-color);
-  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -1027,8 +972,7 @@ section#projects a:hover {
   background: rgba(255, 255, 255, 0.18);
   box-shadow: 
     0 12px 48px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .highlight-card i {
@@ -1116,8 +1060,8 @@ section#projects a:hover {
     width: 100vw;
     height: 100vh;
     background: rgba(30, 20, 60, 0.98); /* Darker background */
-    backdrop-filter: blur(40px) saturate(180%); /* Stronger frosted glass effect */
-    -webkit-backdrop-filter: blur(40px) saturate(180%); /* Safari support */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     display: flex;
     align-items: center;
     justify-content: center;
